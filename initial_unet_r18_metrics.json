@@ -1,0 +1,29 @@
+{
+  "baseline": {
+    "macro_f1": 0.6511627906976745,
+    "boundary_f1_1px": 0.009915891987605136,
+    "predicted_positive": 28,
+    "actual_positive": 15,
+    "combined": 0.3305393413426398
+  },
+  "epochs": [
+    {
+      "macro_f1": 0.6504065040650406,
+      "boundary_f1_1px": 0.17064419798565814,
+      "predicted_positive": 30,
+      "actual_positive": 15,
+      "combined": 0.41052535102534937,
+      "epoch": 1,
+      "train_loss": 1.1264370292425157
+    },
+    {
+      "macro_f1": 0.7440476190476191,
+      "boundary_f1_1px": 0.11946795217942494,
+      "predicted_positive": 15,
+      "actual_positive": 15,
+      "combined": 0.431757785613522,
+      "epoch": 2,
+      "train_loss": 0.8494650751352311
+    }
+  ]
+}

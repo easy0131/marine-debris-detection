@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>해안쓰레기 모델 눈으로 확인</title>
+  <style>
+    :root { font-family: system-ui, "Malgun Gothic", sans-serif; color: #e9f0f2; background: #0e1920; }
+    * { box-sizing: border-box; }
+    body { margin: 0 auto; max-width: 1500px; padding: 24px; }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    p { color: #aebfc5; line-height: 1.5; }
+    .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+    .stat, .toolbar, .case { background: #16262e; border: 1px solid #2b414b; border-radius: 12px; padding: 16px; }
+    .stat strong { display: block; margin: 4px 0; font-size: 24px; }
+    .stat small { color: #aebfc5; }
+    .toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    button, select { background: #233944; border: 1px solid #4a6977; color: #f2f7f8; border-radius: 8px; padding: 9px 12px; font: inherit; cursor: pointer; }
+    button:focus-visible, select:focus-visible { outline: 3px solid #54d7e5; }
+    button:hover, select:hover { background: #30505e; }
+    #counter { margin-left: auto; color: #bed0d5; }
+    .case-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; }
+    .case-title h2 { font-size: 20px; margin: 0; }
+    .badge { display: inline-block; background: #244452; padding: 4px 9px; border-radius: 100px; font-weight: 700; }
+    .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 14px; margin-top: 18px; }
+    .panel h3 { margin: 0 0 8px; font-size: 15px; }
+    .stack { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: #293b40; }
+    .stack img { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+    .meta { color: #b8cbd0; font-size: 13px; margin-top: 7px; min-height: 2.7em; }
+    .legend { margin-top: 14px; color: #b8cbd0; font-size: 14px; }
+    .legend span { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin: 0 4px 0 14px; }
+    @media (max-width: 650px) { .stats { grid-template-columns: 1fr; } #counter { margin-left: 0; } }
+  </style>
+</head>
+<body>
+  <h1>해안쓰레기 모델 눈으로 확인</h1>
+  <p>학습에 쓰지 않은 타일의 0.3m 환산 영상만 표시합니다. 초록은 정답, 주황은 기존 모델, 청록은 새 모델입니다. 오류 패널의 빨강은 오탐, 보라는 놓침입니다.</p>
+  <div class="stats">
+    <div class="stat"><small>기존 모델 · 패치 macro F1</small><strong id="old-f1"></strong><small id="old-counts"></small></div>
+    <div class="stat"><small>새 모델 · 패치 macro F1</small><strong id="new-f1"></strong><small id="new-counts"></small></div>
+  </div>
+  <div class="toolbar">
+    <label for="filter">보기</label>
+    <select id="filter">
+      <option value="errors">새 모델의 오탐·놓침</option>
+      <option value="all">전체 43장</option>
+      <option value="positive">정답 양성</option>
+      <option value="negative">정답 음성</option>
+      <option value="improved">기존보다 개선</option>
+      <option value="worse">기존보다 악화</option>
+    </select>
+    <button id="prev" type="button">← 이전</button>
+    <button id="next" type="button">다음 →</button>
+    <span id="counter"></span>
+  </div>
+  <section class="case">
+    <div class="case-title"><h2 id="name"></h2><span class="badge" id="status"></span></div>
+    <div class="panels">
+      <div class="panel"><h3>입력 영상</h3><div class="stack"><img id="photo" alt="0.3m 환산 입력 영상"></div><div class="meta">256×256 RGB 패치</div></div>
+      <div class="panel"><h3>정답</h3><div class="stack"><img class="source" alt=""><img id="truth" alt="초록 정답 마스크"></div><div class="meta" id="truth-meta"></div></div>
+      <div class="panel"><h3>기존 모델</h3><div class="stack"><img class="source" alt=""><img id="baseline" alt="주황 기존 모델 예측"></div><div class="meta" id="baseline-meta"></div></div>
+      <div class="panel"><h3>새 모델</h3><div class="stack"><img class="source" alt=""><img id="candidate" alt="청록 새 모델 예측"></div><div class="meta" id="candidate-meta"></div></div>
+      <div class="panel"><h3>새 모델의 오류</h3><div class="stack"><img class="source" alt=""><img id="error" alt="빨강 오탐, 보라 놓침"></div><div class="meta" id="error-meta"></div></div>
+    </div>
+    <div class="legend"><span style="background:#3cd278"></span>정답<span style="background:#ffaf34"></span>기존 예측<span style="background:#34d7e8"></span>새 예측<span style="background:#ff4852"></span>오탐<span style="background:#7b66ff"></span>놓침</div>
+  </section>
+  <p>이 화면은 AIHub 드론 자료를 축소한 로컬 비교입니다. 대회 비공개 평가 점수를 뜻하지 않습니다.</p>
+  <script>
+    const cases = __CASES__;
+    const stats = __STATS__;
+    const words = {TP: "쓰레기 탐지", TN: "정상 음성", FP: "오탐", FN: "놓침"};
+    const $ = id => document.getElementById(id);
+    for (const [prefix, key] of [["old", "baseline"], ["new", "candidate"]]) {
+      $(prefix + "-f1").textContent = stats[key].macro_f1.toFixed(3);
+      $(prefix + "-counts").textContent = `정탐 ${stats[key].TP} · 오탐 ${stats[key].FP} · 놓침 ${stats[key].FN} · 정상 음성 ${stats[key].TN}`;
+    }
+    let visible = [], index = 0;
+    function keep(c, filter) {
+      if (filter === "errors") return ["FP", "FN"].includes(c.candidate.status);
+      if (filter === "positive") return c.truth_pixels > 0;
+      if (filter === "negative") return c.truth_pixels === 0;
+      if (filter === "improved") return ["TP", "TN"].includes(c.candidate.status) && ["FP", "FN"].includes(c.baseline.status);
+      if (filter === "worse") return ["FP", "FN"].includes(c.candidate.status) && ["TP", "TN"].includes(c.baseline.status);
+      return true;
+    }
+    function show() {
+      const c = visible[index];
+      $("counter").textContent = visible.length ? `${index + 1} / ${visible.length}` : "해당 사례 없음";
+      document.querySelector(".case").hidden = !c;
+      if (!c) return;
+      $("name").textContent = c.name;
+      $("status").textContent = "새 모델: " + words[c.candidate.status];
+      $("photo").src = c.photo;
+      document.querySelectorAll(".source").forEach(el => el.src = c.photo);
+      for (const [id, key] of [["truth", "truth_layer"], ["baseline", "baseline_layer"], ["candidate", "candidate_layer"], ["error", "error_layer"]]) $(id).src = c[key];
+      $("truth-meta").textContent = `정답 ${c.truth_pixels} px`;
+      $("baseline-meta").textContent = `${words[c.baseline.status]} · 예측 ${c.baseline.pixels} px`;
+      $("candidate-meta").textContent = `${words[c.candidate.status]} · 예측 ${c.candidate.pixels} px`;
+      $("error-meta").textContent = `오탐 ${c.candidate.false_positive_pixels} px · 놓침 ${c.candidate.missed_pixels} px`;
+    }
+    function filterCases() { visible = cases.filter(c => keep(c, $("filter").value)); index = 0; show(); }
+    $("filter").addEventListener("change", filterCases);
+    $("prev").addEventListener("click", () => { if (visible.length) { index = (index - 1 + visible.length) % visible.length; show(); } });
+    $("next").addEventListener("click", () => { if (visible.length) { index = (index + 1) % visible.length; show(); } });
+    document.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") $("prev").click();
+      if (event.key === "ArrowRight") $("next").click();
+    });
+    filterCases();
+  </script>
+</body>
+</html>
