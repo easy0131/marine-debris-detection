@@ -2,3 +2,10 @@ __pycache__/
 .ipynb_checkpoints/
 *.zip
 visual_check.html
+*.pt
+*.npz
+*.npy
+*.log
+experiment_*/smoke/
+.env
+.env.*

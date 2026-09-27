@@ -115,7 +115,7 @@ def measure(model, images, masks, ids):
                 pred.append(bool(mask.any()))
                 truth.append(bool(target.any()))
                 if target.any():
-                    p, t = boundary(mask), boundary(target)
+                    p, t = mask, target  # Official score compares mask areas, not just boundaries.
                     precision = (p & nearby(t)).sum() / max(1, p.sum())
                     recall = (t & nearby(p)).sum() / max(1, t.sum())
                     shapes.append(2 * precision * recall / max(1e-9, precision + recall))
@@ -125,9 +125,9 @@ def measure(model, images, masks, ids):
         fp = sum(p == label and t != label for p, t in zip(pred, truth))
         fn = sum(p != label and t == label for p, t in zip(pred, truth))
         scores.append(2 * tp / max(1, 2 * tp + fp + fn))
-    result = {"macro_f1": sum(scores) / 2, "boundary_f1_1px": float(np.mean(shapes)),
+    result = {"macro_f1": sum(scores) / 2, "shape_f1_1px": float(np.mean(shapes)),
               "predicted_positive": sum(pred), "actual_positive": sum(truth)}
-    result["combined"] = (result["macro_f1"] + result["boundary_f1_1px"]) / 2
+    result["combined"] = (result["macro_f1"] + result["shape_f1_1px"]) / 2
     return result
 
 
