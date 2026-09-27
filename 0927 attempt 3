@@ -1,0 +1,226 @@
+# KNPS 2026 해안쓰레기 검출 베이스라인 제출 (UNet-ResNet18)
+
+0.3m급 위성 RGB 패치(256x256)에서 해안쓰레기 집적대 영역을 이진 마스크로 출력하는 참고
+구현입니다. 성능 기준선이 아니라 **입력에서 제출 파일까지의 흐름과 제출 규격을 확인하는
+최소 동작 예시**이며, 사용 의무는 없습니다.
+
+- 입력: `AIF_INPUT_DIR` 아래 `patches.csv`(`id` 열)와 `images/<id>.png`(256x256 RGB 8bit)
+- 출력: `AIF_PREDICTION_PATH`에 `id,rle` CSV 한 개. `rle`는 256x256 마스크를 행 우선으로 편 뒤
+  `시작 길이` 쌍(0부터 셈, 공백 구분)으로 적은 문자열이며 빈 문자열은 쓰레기 없음을 뜻합니다
+- 동봉 가중치: `assets/model/unet_r18_debris_lite.pt` (57MB). 추론 단계는 네트워크가 차단되므로
+  필요한 파일은 모두 zip 안에 넣어야 합니다
+- 의존성: `requirements.txt`로 선언합니다. 채점 서버가 설치 단계에서 먼저 설치하므로 노트북 안에
+  설치 셀을 두지 않았습니다. `%pip install -r requirements.txt`처럼 상대경로로 파일을 가리키는
+  설치 줄은 설치 단계의 작업 폴더가 제출물 폴더가 아니어서 실패하므로 넣지 마시기 바랍니다
+- 제출 규칙: zip 최상위에 `predict.ipynb`(이 파일)와 `requirements.txt`, 가중치는 `assets/`에 동봉
+
+**로컬 실행**: `patches.csv`와 `images/<id>.png`를 담은 폴더를 만들고 환경변수로 넘기면 됩니다.
+지정하지 않으면 `./input`을 읽고 `./prediction.csv`에 씁니다.
+```
+AIF_INPUT_DIR=<입력 폴더> AIF_PREDICTION_PATH=./prediction.csv jupyter nbconvert --to notebook --execute predict.ipynb
+```
+
+**라이선스**: segmentation_models_pytorch MIT, ResNet18 ImageNet 인코더(torchvision 원본) BSD-3,
+파인튜닝 가중치와 이 코드는 대회 참가 목적으로 자유롭게 사용, 수정, 재학습하실 수 있습니다.
+파생 제출물에 카피레프트나 별도 약관이 전파되지 않습니다. 출처는 `NOTICE`, 원문은 `LICENSE`에
+있습니다. 이 베이스라인은 참고 구현이며 사용 의무가 없습니다.
+
+# [setup]
+import csv
+import io
+import os
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+import torch
+from PIL import Image
+
+INPUT_DIR = Path(os.environ.get("AIF_INPUT_DIR", "./input"))
+PREDICTION_PATH = Path(os.environ.get("AIF_PREDICTION_PATH", "./prediction.csv"))
+CKPT = Path("assets/model/unet_r18_debris_lite.pt")      # 커널의 작업 폴더가 제출물 루트이므로 상대경로로 지정합니다
+
+H, W = 256, 256
+BATCH = 16
+MIN_POS_PX = 50          # 이 값 미만 화소의 마스크는 빈 예측으로 냅니다 (채점 규칙과 동일)
+MEAN = np.array([0.485, 0.456, 0.406], np.float32)
+STD = np.array([0.229, 0.224, 0.225], np.float32)
+
+
+def rle_encode(mask: np.ndarray) -> str:
+    """(H,W) 이진 마스크를 행 우선 0-based '시작 길이' 쌍 문자열로 바꿉니다."""
+    m = np.asarray(mask, dtype=bool).reshape(-1)
+    d = np.diff(np.concatenate([[0], m.astype(np.int8), [0]]))
+    st, en = np.flatnonzero(d == 1), np.flatnonzero(d == -1)
+    return " ".join(f"{a} {b - a}" for a, b in zip(st.tolist(), en.tolist()))
+
+# [postprocessing]
+# OpenCV/SciPy 등의 외부 의존성 없이 Pure NumPy 기반으로 작성된 형태학적 후처리 모듈입니다.
+
+def _erode3x3(mask: np.ndarray) -> np.ndarray:
+    """3x3 커널을 이용한 이진 침식(Erosion) 연산."""
+    padded = np.pad(mask.astype(bool), 1, mode="constant", constant_values=True)
+    out = np.ones_like(mask, dtype=bool)
+    h, w = mask.shape
+    for dy in (-1, 0, 1):
+        for dx in (-1, 0, 1):
+            out &= padded[1 + dy:1 + dy + h, 1 + dx:1 + dx + w]
+    return out.astype(np.uint8)
+
+def _dilate3x3(mask: np.ndarray) -> np.ndarray:
+    """3x3 커널을 이용한 이진 팽창(Dilation) 연산."""
+    padded = np.pad(mask.astype(bool), 1, mode="constant", constant_values=False)
+    out = np.zeros_like(mask, dtype=bool)
+    h, w = mask.shape
+    for dy in (-1, 0, 1):
+        for dx in (-1, 0, 1):
+            out |= padded[1 + dy:1 + dy + h, 1 + dx:1 + dx + w]
+    return out.astype(np.uint8)
+
+def clean_mask(mask: np.ndarray) -> np.ndarray:
+    """Morphological Opening(침식 후 팽창)과 Closing(팽창 후 침식)을 통한 마스크 노이즈 정제."""
+    opened = _dilate3x3(_erode3x3(mask))
+    closed = _erode3x3(_dilate3x3(opened))
+    return closed
+
+def filter_small_blobs(mask: np.ndarray, min_pixels: int = MIN_BLOB_PIXELS) -> np.ndarray:
+    """8-방향 연결성(Connected Component) 기준 min_pixels 미만의 미세 노이즈 영역 제거."""
+    h, w = mask.shape
+    visited = mask.astype(bool)
+    labels = np.zeros((h, w), dtype=np.int32)
+    filtered_mask = np.zeros((h, w), dtype=np.uint8)
+    current_label = 0
+
+    for i in range(h):
+        for j in range(w):
+            if visited[i, j] and labels[i, j] == 0:
+                current_label += 1
+                stack = [(i, j)]
+                labels[i, j] = current_label
+                component_pixels = []
+                
+                while stack:
+                    y, x = stack.pop()
+                    component_pixels.append((y, x))
+                    for dy in (-1, 0, 1):
+                        for dx in (-1, 0, 1):
+                            if dy == 0 and dx == 0:
+                                continue
+                            ny, nx = y + dy, x + dx
+                            if 0 <= ny < h and 0 <= nx < w and visited[ny, nx] and labels[ny, nx] == 0:
+                                labels[ny, nx] = current_label
+                                stack.append((ny, nx))
+
+                if len(component_pixels) >= min_pixels:
+                    for py, px in component_pixels:
+                        filtered_mask[py, px] = 1
+
+    return filtered_mask
+
+# [inputs]
+# 목록 파일을 재귀 탐색으로 찾고 그 부모 폴더를 입력 루트로 삼습니다 (껍데기 폴더 한 겹에 대비).
+# 추론 대상은 목록 파일이 정본이며 images/ 폴더를 훑어 대상을 정하지 않습니다.
+print("AIF_INPUT_DIR:", INPUT_DIR, sorted(p.name for p in INPUT_DIR.iterdir()) if INPUT_DIR.is_dir() else "(없음)")
+lists = sorted(INPUT_DIR.rglob("patches.csv"))
+if not lists:
+    # 입력이 풀린 폴더가 아니라 압축본 그대로 주어지는 경우에 대비합니다
+    zs = sorted(INPUT_DIR.rglob("*.zip")) if INPUT_DIR.is_dir() else []
+    if len(zs) == 1:
+        import tempfile, zipfile
+        dst = Path(tempfile.mkdtemp()) / "input"
+        with zipfile.ZipFile(zs[0]) as z:
+            z.extractall(dst)
+        print(f"입력이 압축본이어서 풀어서 읽습니다: {zs[0].name} -> {dst}")
+        lists = sorted(dst.rglob("patches.csv"))
+
+if not lists:
+    raise SystemExit(f"patches.csv 를 찾지 못했습니다: {INPUT_DIR}")
+
+ROOT = lists[0].parent
+with lists[0].open(encoding="utf-8-sig", newline="") as f:
+    IDS = [row["id"].strip() for row in csv.DictReader(f) if row.get("id", "").strip()]
+print(f"입력 루트 {ROOT}, 패치 {len(IDS)}건")
+
+# [env]
+print("python", sys.version.split()[0], "torch", torch.__version__)
+print("cuda", torch.cuda.is_available(), "mps", getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available())
+
+# [model]
+import segmentation_models_pytorch as smp
+
+def load_model(device: str):
+    model = smp.Unet(encoder_name="resnet18", encoder_weights=None, in_channels=3, classes=2)
+    ck = torch.load(CKPT, map_location="cpu", weights_only=True)
+    
+    # State dict 키 불일치 방지 대응
+    state_dict = ck.get("state_dict", ck)
+    missing, unexpected = model.load_state_dict(state_dict, strict=False)
+    if missing or unexpected:
+        print(f"[warn] missing keys: {len(missing)}, unexpected keys: {len(unexpected)}")
+        
+    return model.to(device).eval()
+
+def read_image(path: Path) -> np.ndarray:
+    """파일을 직접 읽어 메모리 객체로 넘깁니다 (라이브러리에 경로를 맡기지 않습니다)."""
+    with Image.open(io.BytesIO(path.read_bytes())) as im:
+        arr = np.asarray(im.convert("RGB"))
+    if arr.shape[:2] != (H, W):
+        raise ValueError(f"{path.name}: 크기 {arr.shape[:2]} 가 {(H, W)} 와 다릅니다")
+    return arr
+
+@torch.no_grad()
+def predict_batch(model, imgs: list[np.ndarray], device: str) -> np.ndarray:
+    x = np.stack([(im / 255.0 - MEAN) / STD for im in imgs]).astype(np.float32)
+    x = torch.from_numpy(x).permute(0, 3, 1, 2).to(device)
+    logits = model(x)
+    prob = torch.softmax(logits, dim=1)
+    
+    # Argmax 기반 원본 이진 마스크 추출 (Class 1 = 쓰레기)
+    raw_masks = (prob[:, 1] > prob[:, 0]).cpu().numpy().astype(np.uint8)
+    
+    # 후처리 진행: 형태학적 정제 -> Blob 필터링
+    processed_masks = []
+    for m in raw_masks:
+        m_cleaned = clean_mask(m)
+        m_filtered = filter_small_blobs(m_cleaned, min_pixels=MIN_BLOB_PIXELS)
+        processed_masks.append(m_filtered)
+        
+    return np.array(processed_masks, dtype=np.uint8)
+
+# 가속기에서 1건을 시험 추론하고, 실패하면 CPU 로 전환합니다
+DEVICE = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+try:
+    MODEL = load_model(DEVICE)
+    predict_batch(MODEL, [np.zeros((H, W, 3), np.uint8)], DEVICE)
+except Exception as e:  # noqa: BLE001
+    print(f"{DEVICE} 시험 추론에 실패해({type(e).__name__}) CPU 로 전환합니다: {e}")
+    DEVICE = "cpu"
+    MODEL = load_model(DEVICE)
+
+print("device", DEVICE, "params", sum(p.numel() for p in MODEL.parameters()))
+
+# [infer]
+ROWS = []
+t0 = time.time()
+for s in range(0, len(IDS), BATCH):
+    ids = IDS[s:s + BATCH]
+    masks = predict_batch(MODEL, [read_image(ROOT / "images" / f"{i}.png") for i in ids], DEVICE)
+    for i, m in zip(ids, masks):
+        # 전체 픽셀 수가 MIN_POS_PX 미만인 경우 빈 마스크 처리
+        if int(m.sum()) < MIN_POS_PX:
+            m = np.zeros_like(m)
+        ROWS.append((i, rle_encode(m)))
+    if (s // BATCH) % 10 == 0 or s + BATCH >= len(IDS):
+        print(f"  {min(s + BATCH, len(IDS))}/{len(IDS)}  {time.time() - t0:.1f}s", flush=True)
+
+n_pos = sum(1 for _, r in ROWS if r)
+print(f"추론을 완료했습니다: {len(ROWS)}건, 양성 {n_pos}건, {time.time() - t0:.1f}s")
+
+# [save]
+PREDICTION_PATH.parent.mkdir(parents=True, exist_ok=True)
+with PREDICTION_PATH.open("w", newline="", encoding="utf-8") as f:
+    w = csv.writer(f)
+    w.writerow(["id", "rle"])
+    w.writerows(ROWS)
+print("저장했습니다:", PREDICTION_PATH, PREDICTION_PATH.stat().st_size, "bytes")
