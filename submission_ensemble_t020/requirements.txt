@@ -1,0 +1,6 @@
+# phase 1 (네트워크 O) 에서 pip install -r 로 설치됨. 채점 서버에 GPU 가 없으면 CPU 휠로 충분함.
+# --extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.5
+segmentation-models-pytorch>=0.5
+numpy>=2.0
+pillow>=10.0

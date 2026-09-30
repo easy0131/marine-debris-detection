@@ -1,0 +1,508 @@
+[
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.05,
+    "tta": false,
+    "macro_f1": 0.6598346200572167,
+    "shape_f1": 0.23573917839466474,
+    "combined": 0.4477868992259407,
+    "confusion": [
+      [
+        115,
+        51
+      ],
+      [
+        42,
+        72
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6759259259259259,
+    "shape_f1": 0.21740131874029006,
+    "combined": 0.44666362233310797,
+    "confusion": [
+      [
+        129,
+        37
+      ],
+      [
+        49,
+        65
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.15,
+    "tta": false,
+    "macro_f1": 0.6647619047619048,
+    "shape_f1": 0.20214937777347455,
+    "combined": 0.43345564126768965,
+    "confusion": [
+      [
+        131,
+        35
+      ],
+      [
+        53,
+        61
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.2,
+    "tta": false,
+    "macro_f1": 0.6558129370629371,
+    "shape_f1": 0.19966755620702384,
+    "combined": 0.42774024663498045,
+    "confusion": [
+      [
+        131,
+        35
+      ],
+      [
+        55,
+        59
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.3,
+    "tta": false,
+    "macro_f1": 0.6561383173959239,
+    "shape_f1": 0.1914725574046987,
+    "combined": 0.4238054374003113,
+    "confusion": [
+      [
+        134,
+        32
+      ],
+      [
+        57,
+        57
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6274909420289855,
+    "shape_f1": 0.17579685192733274,
+    "combined": 0.4016438969781591,
+    "confusion": [
+      [
+        137,
+        29
+      ],
+      [
+        65,
+        49
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.7,
+    "tta": false,
+    "macro_f1": 0.6246486486486487,
+    "shape_f1": 0.16979047958964216,
+    "combined": 0.3972195641191454,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.05,
+    "tta": false,
+    "macro_f1": 0.6443862520458266,
+    "shape_f1": 0.24901956320291915,
+    "combined": 0.44670290762437287,
+    "confusion": [
+      [
+        114,
+        52
+      ],
+      [
+        45,
+        69
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6770212994259348,
+    "shape_f1": 0.23162153432661817,
+    "combined": 0.4543214168762765,
+    "confusion": [
+      [
+        128,
+        38
+      ],
+      [
+        48,
+        66
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.15,
+    "tta": false,
+    "macro_f1": 0.6512980525789985,
+    "shape_f1": 0.20800271640701767,
+    "combined": 0.4296503844930081,
+    "confusion": [
+      [
+        131,
+        35
+      ],
+      [
+        56,
+        58
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.2,
+    "tta": false,
+    "macro_f1": 0.6544347539904558,
+    "shape_f1": 0.2080914601589357,
+    "combined": 0.43126310707469573,
+    "confusion": [
+      [
+        132,
+        34
+      ],
+      [
+        56,
+        58
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.3,
+    "tta": false,
+    "macro_f1": 0.6313696143239236,
+    "shape_f1": 0.18169710167409142,
+    "combined": 0.40653335799900747,
+    "confusion": [
+      [
+        132,
+        34
+      ],
+      [
+        61,
+        53
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6256045519203415,
+    "shape_f1": 0.17044906391953193,
+    "combined": 0.3980268079199367,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.7,
+    "tta": false,
+    "macro_f1": 0.623391812865497,
+    "shape_f1": 0.15567904031318278,
+    "combined": 0.38953542658933993,
+    "confusion": [
+      [
+        144,
+        22
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.05,
+    "tta": false,
+    "macro_f1": 0.6354166666666667,
+    "shape_f1": 0.24632857726465196,
+    "combined": 0.44087262196565935,
+    "confusion": [
+      [
+        110,
+        56
+      ],
+      [
+        44,
+        70
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6609492887652859,
+    "shape_f1": 0.2321959536662848,
+    "combined": 0.44657262121578534,
+    "confusion": [
+      [
+        123,
+        43
+      ],
+      [
+        48,
+        66
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.15,
+    "tta": false,
+    "macro_f1": 0.6463830307309986,
+    "shape_f1": 0.2089162674463744,
+    "combined": 0.42764964908868647,
+    "confusion": [
+      [
+        128,
+        38
+      ],
+      [
+        55,
+        59
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.2,
+    "tta": false,
+    "macro_f1": 0.6512980525789985,
+    "shape_f1": 0.20205708904127784,
+    "combined": 0.4266775708101382,
+    "confusion": [
+      [
+        131,
+        35
+      ],
+      [
+        56,
+        58
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.3,
+    "tta": false,
+    "macro_f1": 0.6452963207755013,
+    "shape_f1": 0.1999503057175208,
+    "combined": 0.42262331324651103,
+    "confusion": [
+      [
+        132,
+        34
+      ],
+      [
+        58,
+        56
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6327920084826162,
+    "shape_f1": 0.18369784159376384,
+    "combined": 0.40824492503819,
+    "confusion": [
+      [
+        134,
+        32
+      ],
+      [
+        62,
+        52
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.7,
+    "tta": false,
+    "macro_f1": 0.610614901578472,
+    "shape_f1": 0.15882835555323785,
+    "combined": 0.3847216285658549,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        69,
+        45
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.05,
+    "tta": true,
+    "macro_f1": 0.6560196560196561,
+    "shape_f1": 0.23174452509880916,
+    "combined": 0.4438820905592326,
+    "confusion": [
+      [
+        100,
+        66
+      ],
+      [
+        30,
+        84
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.1,
+    "tta": true,
+    "macro_f1": 0.6619542781477588,
+    "shape_f1": 0.22870319223683974,
+    "combined": 0.44532873519229926,
+    "confusion": [
+      [
+        112,
+        54
+      ],
+      [
+        39,
+        75
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.15,
+    "tta": true,
+    "macro_f1": 0.6688393608074011,
+    "shape_f1": 0.2269647291442975,
+    "combined": 0.4479020449758493,
+    "confusion": [
+      [
+        119,
+        47
+      ],
+      [
+        43,
+        71
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.2,
+    "tta": true,
+    "macro_f1": 0.6716242870089024,
+    "shape_f1": 0.2124128912307216,
+    "combined": 0.442018589119812,
+    "confusion": [
+      [
+        125,
+        41
+      ],
+      [
+        47,
+        67
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.3,
+    "tta": true,
+    "macro_f1": 0.6592731898888213,
+    "shape_f1": 0.1997249182600936,
+    "combined": 0.42949905407445743,
+    "confusion": [
+      [
+        135,
+        31
+      ],
+      [
+        57,
+        57
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.5,
+    "tta": true,
+    "macro_f1": 0.6327207207207207,
+    "shape_f1": 0.16882649104536218,
+    "combined": 0.40077360588304145,
+    "confusion": [
+      [
+        142,
+        24
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.7,
+    "tta": true,
+    "macro_f1": 0.6158782139222021,
+    "shape_f1": 0.14664577175011642,
+    "combined": 0.38126199283615925,
+    "confusion": [
+      [
+        145,
+        21
+      ],
+      [
+        72,
+        42
+      ]
+    ]
+  }
+]

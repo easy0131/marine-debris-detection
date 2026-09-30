@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-30",
+  "archive": "submission_kaggle_refined_20260930.zip",
+  "archive_bytes": 53204990,
+  "archive_sha256": "93334a792f91037652c066a11f42e2895ecf9b6d492f0536cfad481f461755bd",
+  "checkpoint_sha256": "af0f8c00cd6555e98cf63c8cf62fa72290e40b44d62d5477a7590286116f062e",
+  "selected": {
+    "name": "epoch6",
+    "threshold": 0.3,
+    "tta": false,
+    "macro_f1": 0.6912820512820512,
+    "shape_f1": 0.28389525553194495,
+    "combined": 0.4875886534069981,
+    "confusion": [
+      [
+        107,
+        59
+      ],
+      [
+        27,
+        87
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  "public_score": null,
+  "notebook_smoke_rows": 4,
+  "smoke_device": "cpu",
+  "smoke_matches_kaggle_cached_masks": true,
+  "rle_roundtrip_ok": true,
+  "zip_crc_ok": true,
+  "checkpoint_matches_source": true,
+  "kaggle_saved_version": 2,
+  "kaggle_url": "https://www.kaggle.com/code/jio0131/coastal-debris-free-gpu-refinement",
+  "note": "Selected on reused spatial drone validation. Public improvement requires competition submission."
+}

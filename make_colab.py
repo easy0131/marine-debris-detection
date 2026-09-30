@@ -1,6 +1,7 @@
 """Create a self-contained Colab training notebook and private data bundle."""
 import argparse
 import ast
+import copy
 import json
 import shutil
 import zipfile
@@ -13,6 +14,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data', type=Path, default=HERE / 'experiment_v2')
     parser.add_argument('--output', type=Path, default=Path.home() / 'Desktop/해안쓰레기/GPU학습')
+    parser.add_argument('--init', type=Path, default=BASE)
+    parser.add_argument('--refine', action='store_true', help='Build 12-epoch refinement notebooks for Colab and Kaggle')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     bundle = HERE / 'colab_bundle'
@@ -37,7 +40,7 @@ def main():
             cell['outputs'], cell['execution_count'] = [], None
             ast.parse(''.join(cell['source']))
     (bundle / 'template/predict.ipynb').write_text(json.dumps(template, ensure_ascii=False, indent=1), encoding='utf-8')
-    shutil.copy2(BASE, bundle / 'provided_original.pt')
+    shutil.copy2(args.init, bundle / 'provided_original.pt')
     archive = args.output / 'coastal_training_bundle.zip'
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED, compresslevel=1) as z:
         for file in sorted(bundle.rglob('*')):
@@ -89,12 +92,15 @@ print('검증 지역 수:', len(report['holdout_groups']))
 import subprocess, sys
 subprocess.run([sys.executable, 'test_pipeline.py'], check=True)
 ''')
-    cell('code', '''import subprocess, sys, hashlib
+    cell('code', f'''import subprocess, sys, hashlib
 with Path('data/data.npz').open('rb') as file:
-    EXPERIMENT = 'experiment_gpu_' + hashlib.file_digest(file, 'sha256').hexdigest()[:10]
+    data_id = hashlib.file_digest(file, 'sha256').hexdigest()[:10]
+with Path('provided_original.pt').open('rb') as file:
+    model_id = hashlib.file_digest(file, 'sha256').hexdigest()[:10]
+EXPERIMENT = 'experiment_{'refine' if args.refine else 'gpu'}_' + data_id + '_' + model_id
 command = [sys.executable, '-u', 'train_spatial.py', '--data', 'data/data.npz',
            '--init', 'provided_original.pt', '--out', EXPERIMENT,
-           '--device', 'cuda', '--epochs', '30', '--samples', '512', '--batch-size', '16', '--tta']
+           '--device', 'cuda', '--epochs', '{12 if args.refine else 30}', '--samples', '{768 if args.refine else 512}', '--batch-size', '16', '--tta'] + {(['--refine'] if args.refine else [])!r}
 if (Path(EXPERIMENT) / 'last.pt').exists():
     command.append('--resume')
 subprocess.run(command, check=True)
@@ -113,6 +119,54 @@ files.download('/content/coastal_training_results.zip')
                                               accelerator='GPU', colab=dict(name='해안쓰레기_GPU학습.ipynb')),
                     nbformat=4, nbformat_minor=5)
     (args.output / '해안쓰레기_GPU학습.ipynb').write_text(json.dumps(notebook, ensure_ascii=False, indent=1), encoding='utf-8')
+    if args.refine:
+        # Keep Kaggle from unpacking and indexing the training archive during upload.
+        shutil.copyfile(archive, archive.with_suffix('.bin'))
+        kaggle = copy.deepcopy(notebook)
+        kaggle['metadata'].pop('colab', None)
+        kaggle['cells'][0]['source'] = ['# 해안쓰레기 무료 Kaggle GPU 보완 학습\n',
+            '1. `coastal_training_bundle.bin`을 본인 계정의 **Private** 데이터로 올리고 Add Input으로 연결합니다. 노트북에서 압축을 풉니다.\n',
+            '2. Notebook 설정에서 GPU와 Internet을 켠 뒤 Run All을 실행합니다.\n',
+            '3. 완료 후 Save Version에서 출력 저장을 켜고 저장합니다. 저장된 버전의 Output 탭에서 제출 ZIP과 학습 기록을 다운로드합니다.\n',
+            'Public 0.3913 모델에서 12회 보완 학습합니다. 학습용 오탐과 이미지별 Dice를 사용하며 대회에 자동 제출하지 않습니다.\n']
+        for item in kaggle['cells']:
+            source_code = ''.join(item['source'])
+            if 'uploaded = files.upload()' in source_code:
+                source_code = '''import torch, shutil, zipfile, json, subprocess, sys
+from pathlib import Path
+assert torch.cuda.is_available(), 'Notebook 설정에서 GPU를 켜세요.'
+print('사용 GPU:', torch.cuda.get_device_name(0))
+work = Path('/kaggle/working/coastal').resolve()
+work.mkdir(parents=True, exist_ok=True)
+roots = [p.parent.parent for p in Path('/kaggle/input').rglob('data.npz')
+         if p.parent.name == 'data' and (p.parent.parent / 'train_spatial.py').is_file()]
+if roots:
+    assert len(roots) == 1, '이번 학습 데이터 하나만 연결하세요.'
+    shutil.copytree(roots[0], work, dirs_exist_ok=True)
+else:
+    archives = [p for name in ('coastal_training_bundle.zip', 'coastal_training_bundle.bin')
+                for p in Path('/kaggle/input').rglob(name)]
+    assert len(archives) == 1, 'Add Input으로 이번 학습 ZIP을 연결하세요.'
+    with zipfile.ZipFile(archives[0]) as z:
+        assert {'data/data.npz', 'data/data_report.json', 'train_spatial.py'} <= set(z.namelist())
+        assert all((work / name).resolve().is_relative_to(work) for name in z.namelist()), 'ZIP 내부 경로 오류'
+        z.extractall(work)
+import os
+os.chdir(work)
+print('학습 데이터:', json.loads(Path('data/data_report.json').read_text())['prepared'])
+subprocess.run([sys.executable, 'test_pipeline.py'], check=True)
+'''
+            if "files.download('submission_gpu.zip')" in source_code:
+                source_code = source_code.replace("files.download('submission_gpu.zip')", "print('출력을 포함하여 Save Version으로 저장한 뒤, Output → coastal → submission_gpu.zip을 다운로드하세요.')")
+            if 'coastal_training_results' in source_code:
+                source_code = '''import shutil
+shutil.make_archive('/kaggle/working/coastal_training_results', 'zip', str(work), EXPERIMENT)
+print('학습 기록: 저장된 버전의 Output → coastal_training_results.zip에서 다운로드하세요.')
+'''
+            if item['cell_type'] == 'code' and not source_code.startswith('%'):
+                ast.parse(source_code)
+            item['source'] = source_code.splitlines(keepends=True)
+        (args.output / '해안쓰레기_Kaggle학습.ipynb').write_text(json.dumps(kaggle, ensure_ascii=False, indent=1), encoding='utf-8')
     print(f'Created {archive} ({archive.stat().st_size / 1e6:.1f} MB) and GPU notebook', flush=True)
 
 

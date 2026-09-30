@@ -53,6 +53,16 @@ def augment(image, mask, rng):
     return (image - MEAN) / STD, mask
 
 
+def refinement_loss(logits, target):
+    """Weight positive patches equally, matching the patch-averaged shape metric."""
+    p = logits.float().softmax(1)[:, 1]
+    truth = target.float()
+    area = truth.sum((1, 2))
+    dice = 1 - (2 * (p * truth).sum((1, 2)) + 1) / (p.sum((1, 2)) + area + 1)
+    positive = area > 0
+    return torch.nn.functional.cross_entropy(logits, target, weight=logits.new_tensor([1., 10.])) + (dice * positive).sum() / positive.sum().clamp_min(1)
+
+
 @torch.inference_mode()
 def predict(model, images, device, batch_size, tta=False):
     model.eval()
@@ -80,6 +90,7 @@ def main():
     parser.add_argument('--device', default='auto', choices=('auto', 'cuda', 'cpu'))
     parser.add_argument('--tta', action='store_true')
     parser.add_argument('--resume', action='store_true')
+    parser.add_argument('--refine', action='store_true', help='Low-rate refinement with hard negatives and per-patch Dice')
     args = parser.parse_args()
     if args.epochs < 1 or args.samples < 2 or args.batch_size < 1:
         parser.error('epochs >= 1, samples >= 2 and batch-size >= 1 required')
@@ -121,6 +132,8 @@ def main():
         saved = torch.load(args.out / 'last.pt', map_location=device, weights_only=True)
         if saved.get('data_sha256') != data_sha256:
             raise ValueError('Resume dataset changed or lacks a fingerprint; use a new --out directory')
+        if saved.get('refine', False) != args.refine:
+            raise ValueError('Resume training mode changed; use a new --out directory')
         model.load_state_dict(saved['state_dict'])
         optimizer.load_state_dict(saved['optimizer'])
         scaler.load_state_dict(saved['scaler'])
@@ -131,6 +144,19 @@ def main():
         start_epoch = saved['epoch'] + 1
         metrics = saved['metrics']
         best = max(r['combined'] for r in metrics)
+    hard_negative = negative
+    if args.refine:
+        # ponytail: center-crop mining is cheap; mine all corners if edge-only false positives dominate.
+        torch_rng = torch.get_rng_state()
+        mining_model = smp.Unet(encoder_name='resnet18', encoder_weights=None, in_channels=3, classes=2).to(device)
+        mining_model.load_state_dict(checkpoint['state_dict'])
+        probability = predict(mining_model, data['images'][negative, 42:298, 42:298], device, args.batch_size)
+        hardness = np.partition(probability.reshape(len(negative), -1), -50, axis=1)[:, -50:].mean(1)
+        hard_negative = negative[np.argsort(hardness)[-max(1, len(negative) // 4):]]
+        assert set(hard_negative).issubset(set(train)) and set(hard_negative).isdisjoint(set(val))
+        del mining_model, probability
+        torch.set_rng_state(torch_rng)
+        (args.out / 'hard_negatives.json').write_text(json.dumps(data['names'][hard_negative].tolist()), encoding='utf-8')
     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
     config.update(device=device, data_sha256=data_sha256, train_images=len(train), train_positive=len(positive), validation_images=len(val),
                   validation_crops=len(vn), validation_positive=int(vm.any((1, 2)).sum()),
@@ -141,7 +167,8 @@ def main():
     def evaluate(name, tta=False):
         nonlocal best
         p = predict(model, vi, device, args.batch_size, tta)
-        rows = [dict(name=name, threshold=t, tta=tta, **score_masks(p > t, vm)) for t in (.1, .25, .4, .5, .6, .75)]
+        thresholds = (.05, .1, .15, .2, .3, .5, .7) if args.refine else (.1, .25, .4, .5, .6, .75)
+        rows = [dict(name=name, threshold=t, tta=tta, **score_masks(p > t, vm)) for t in thresholds]
         metrics.extend(rows)
         winner = max(rows, key=lambda r: r['combined'])
         if winner['combined'] > best:
@@ -155,18 +182,21 @@ def main():
         return winner
 
     if not args.resume:
-        evaluate('initial_checkpoint')
+        evaluate('initial_checkpoint', tta=args.refine and args.tta)
     for epoch in range(start_epoch, args.epochs + 1):
         started = time.time()
         model.train()
         # Warm up the decoder; retain pretrained encoder BN but adapt decoder BN to real imagery.
         model.encoder.eval()
-        model.encoder.requires_grad_(epoch > 2)
-        ids = np.r_[rng.choice(positive, args.samples // 2), rng.choice(negative, args.samples - args.samples // 2)]
+        model.encoder.requires_grad_(args.refine or epoch > 2)
+        negative_count = args.samples - args.samples // 2
+        mined_count = negative_count // 2 if args.refine else 0
+        ids = np.r_[rng.choice(positive, args.samples // 2), rng.choice(negative, negative_count - mined_count),
+                    rng.choice(hard_negative, mined_count)]
         rng.shuffle(ids)
         losses = []
         factor = .5 * (1 + math.cos(math.pi * (epoch - 1) / max(args.epochs, 1)))
-        for group, lr in zip(optimizer.param_groups, (2e-5, 3e-4)):
+        for group, lr in zip(optimizer.param_groups, (5e-6, 3e-5) if args.refine else (2e-5, 3e-4)):
             group['lr'] = lr * (.1 + .9 * factor)
         for offset in range(0, len(ids), args.batch_size):
             examples = [augment(data['images'][i], data['masks'][i], rng) for i in ids[offset:offset + args.batch_size]]
@@ -177,7 +207,7 @@ def main():
                 logits = model(x)
                 p, target = logits.float().softmax(1)[:, 1], y.float()
                 dice = 1 - (2 * (p * target).sum() + 1) / (p.sum() + target.sum() + 1)
-                loss = ce(logits, y) + dice
+                loss = refinement_loss(logits, y) if args.refine else ce(logits, y) + dice
             if not torch.isfinite(loss):
                 raise FloatingPointError('Non-finite loss; checkpoint has not been overwritten')
             scaler.scale(loss).backward()
@@ -188,7 +218,7 @@ def main():
             losses.append(loss.item())
         evaluate(f'epoch{epoch}')
         torch.save(dict(state_dict=model.state_dict(), optimizer=optimizer.state_dict(), scaler=scaler.state_dict(),
-                        epoch=epoch, data_sha256=data_sha256, rng=rng.bit_generator.state, torch_rng=torch.get_rng_state(),
+                        epoch=epoch, data_sha256=data_sha256, refine=args.refine, rng=rng.bit_generator.state, torch_rng=torch.get_rng_state(),
                         cuda_rng=torch.cuda.get_rng_state_all() if device == 'cuda' else None, metrics=metrics), args.out / 'last.tmp')
         (args.out / 'last.tmp').replace(args.out / 'last.pt')
         print(f'epoch {epoch}: loss={np.mean(losses):.4f}, seconds={time.time() - started:.1f}', flush=True)

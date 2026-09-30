@@ -1,0 +1,328 @@
+{
+  "date": "2026-09-30",
+  "sources": [
+    "review_kaggle_20260930\\experiment_refine_ce6b62d69b_4e7463e151",
+    "experiment_combined_cpu",
+    "review_gpu_20260927\\experiment"
+  ],
+  "source_selections": [
+    {
+      "name": "epoch6",
+      "threshold": 0.3,
+      "tta": false,
+      "macro_f1": 0.6912820512820512,
+      "shape_f1": 0.28389525553194495,
+      "combined": 0.4875886534069981,
+      "confusion": [
+        [
+          107,
+          59
+        ],
+        [
+          27,
+          87
+        ]
+      ],
+      "probability_file": "best_prob.npy"
+    },
+    {
+      "name": "epoch1",
+      "threshold": 0.25,
+      "tta": false,
+      "macro_f1": 0.7057359367221638,
+      "shape_f1": 0.14996720351759643,
+      "combined": 0.4278515701198801,
+      "confusion": [
+        [
+          141,
+          25
+        ],
+        [
+          51,
+          63
+        ]
+      ],
+      "probability_file": "best_prob.npy"
+    },
+    {
+      "name": "best_flip_tta",
+      "threshold": 0.1,
+      "tta": true,
+      "macro_f1": 0.6849090038933658,
+      "shape_f1": 0.2245569564086503,
+      "combined": 0.45473298015100805,
+      "confusion": [
+        [
+          113,
+          53
+        ],
+        [
+          34,
+          80
+        ]
+      ],
+      "probability_file": "best_prob.npy"
+    }
+  ],
+  "validation_crops": 280,
+  "validation_inputs_and_targets_identical": true,
+  "results": [
+    {
+      "method": "refined_only",
+      "threshold": 0.3,
+      "macro_f1": 0.6912820512820512,
+      "shape_f1": 0.28389525553194495,
+      "combined": 0.4875886534069981,
+      "confusion": [
+        [
+          107,
+          59
+        ],
+        [
+          27,
+          87
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_original_gpu",
+      "threshold": 0.2,
+      "macro_f1": 0.6841025641025641,
+      "shape_f1": 0.28120543634108536,
+      "combined": 0.4826540002218247,
+      "confusion": [
+        [
+          106,
+          60
+        ],
+        [
+          28,
+          86
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_cpu",
+      "threshold": 0.2,
+      "macro_f1": 0.6846846846846847,
+      "shape_f1": 0.2774274533562201,
+      "combined": 0.4810560690204524,
+      "confusion": [
+        [
+          104,
+          62
+        ],
+        [
+          26,
+          88
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_cpu",
+      "threshold": 0.15,
+      "macro_f1": 0.6819440721879746,
+      "shape_f1": 0.27651900811943775,
+      "combined": 0.47923154015370617,
+      "confusion": [
+        [
+          99,
+          67
+        ],
+        [
+          22,
+          92
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_original_gpu",
+      "threshold": 0.3,
+      "macro_f1": 0.6843537414965986,
+      "shape_f1": 0.265575331374232,
+      "combined": 0.47496453643541525,
+      "confusion": [
+        [
+          114,
+          52
+        ],
+        [
+          35,
+          79
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_original_gpu",
+      "threshold": 0.15,
+      "macro_f1": 0.6711601307189543,
+      "shape_f1": 0.27807111876033475,
+      "combined": 0.4746156247396445,
+      "confusion": [
+        [
+          98,
+          68
+        ],
+        [
+          24,
+          90
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_original_gpu",
+      "threshold": 0.25,
+      "macro_f1": 0.6781983238419917,
+      "shape_f1": 0.27098015213700993,
+      "combined": 0.4745892379895008,
+      "confusion": [
+        [
+          111,
+          55
+        ],
+        [
+          34,
+          80
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_cpu",
+      "threshold": 0.25,
+      "macro_f1": 0.6791595318716124,
+      "shape_f1": 0.26549104889378283,
+      "combined": 0.4723252903826976,
+      "confusion": [
+        [
+          109,
+          57
+        ],
+        [
+          32,
+          82
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_cpu",
+      "threshold": 0.3,
+      "macro_f1": 0.6776655327185006,
+      "shape_f1": 0.2561038720417132,
+      "combined": 0.46688470238010693,
+      "confusion": [
+        [
+          112,
+          54
+        ],
+        [
+          35,
+          79
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_original_gpu",
+      "threshold": 0.4,
+      "macro_f1": 0.6761984861227923,
+      "shape_f1": 0.2555118972560216,
+      "combined": 0.4658551916894069,
+      "confusion": [
+        [
+          120,
+          46
+        ],
+        [
+          42,
+          72
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_cpu",
+      "threshold": 0.4,
+      "macro_f1": 0.6835576114381834,
+      "shape_f1": 0.2422978621812747,
+      "combined": 0.46292773680972904,
+      "confusion": [
+        [
+          121,
+          45
+        ],
+        [
+          41,
+          73
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_original_gpu",
+      "threshold": 0.1,
+      "macro_f1": 0.6390601268650049,
+      "shape_f1": 0.27283596480219435,
+      "combined": 0.4559480458335996,
+      "confusion": [
+        [
+          86,
+          80
+        ],
+        [
+          21,
+          93
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_cpu",
+      "threshold": 0.5,
+      "macro_f1": 0.687047232686178,
+      "shape_f1": 0.20638091551454912,
+      "combined": 0.44671407410036357,
+      "confusion": [
+        [
+          138,
+          28
+        ],
+        [
+          53,
+          61
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_cpu",
+      "threshold": 0.1,
+      "macro_f1": 0.6058558558558559,
+      "shape_f1": 0.2738395983252501,
+      "combined": 0.439847727090553,
+      "confusion": [
+        [
+          77,
+          89
+        ],
+        [
+          21,
+          93
+        ]
+      ]
+    },
+    {
+      "method": "refined_plus_original_gpu",
+      "threshold": 0.5,
+      "macro_f1": 0.6450333292438556,
+      "shape_f1": 0.21039225929774374,
+      "combined": 0.42771279427079967,
+      "confusion": [
+        [
+          129,
+          37
+        ],
+        [
+          56,
+          58
+        ]
+      ]
+    }
+  ],
+  "public_score": null,
+  "note": "Threshold and model selection on reused spatial drone validation; not an independent test. Public improvement is unverified."
+}

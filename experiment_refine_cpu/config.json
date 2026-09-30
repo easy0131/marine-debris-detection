@@ -1,0 +1,19 @@
+{
+  "data": "experiment_combined\\data.npz",
+  "out": "experiment_refine_cpu",
+  "init": "review_gpu_20260927\\experiment\\best.pt",
+  "epochs": 2,
+  "samples": 128,
+  "batch_size": 8,
+  "device": "cpu",
+  "tta": true,
+  "resume": false,
+  "refine": true,
+  "data_sha256": "ce6b62d69b0dabb39a73212107de45a754a855eec9720354bb13cfe4fb743e32",
+  "train_images": 661,
+  "train_positive": 221,
+  "validation_images": 70,
+  "validation_crops": 280,
+  "validation_positive": 114,
+  "note": "Spatial AIHub proxy. Chosen on validation, not an independent test or Public score."
+}

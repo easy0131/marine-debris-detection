@@ -18,17 +18,43 @@ from train_baseline import BASE, HERE
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--experiment', type=Path, default=OUT)
+    parser.add_argument('--ensemble', type=Path, help='Average with one other experiment; requires --threshold')
+    parser.add_argument('--threshold', type=float, help='Override the selected probability threshold')
     parser.add_argument('--template', type=Path, default=BASE.parents[2])
     parser.add_argument('--destination', type=Path, default=HERE / 'submission_improved_20260927')
     args = parser.parse_args()
+    if args.ensemble and args.threshold is None:
+        parser.error('--ensemble requires an explicitly validated --threshold')
+    if args.threshold is not None and not 0 < args.threshold < 1:
+        parser.error('--threshold must be between 0 and 1')
     experiment = args.experiment.resolve()
     self_check()
     torch.set_num_threads(4)
     selected = json.loads((experiment / 'best.json').read_text())
+    experiments = [experiment] + ([args.ensemble.resolve()] if args.ensemble else [])
+    selections = [json.loads((path / 'best.json').read_text()) for path in experiments]
+    threshold = selected['threshold'] if args.threshold is None else args.threshold
+    data = np.load(experiment / 'data.npz')
+    val = np.flatnonzero(data['splits'] == 'val')
+    probabilities = []
+    for path, choice in zip(experiments, selections):
+        with np.load(path / 'data.npz') as other:
+            other_val = np.flatnonzero(other['splits'] == 'val')
+            for key in ('names', 'images', 'masks'):
+                assert np.array_equal(data[key][val], other[key][other_val]), f'Validation mismatch: {path}, {key}'
+        probability = np.load(path / choice.get('probability_file', choice['name'] + '_prob.npy'))
+        assert probability.shape == data['masks'][val].shape
+        assert np.isfinite(probability).all() and probability.min() >= 0 and probability.max() <= 1
+        probabilities.append(probability)
+    expected_prob = sum(probabilities) / len(probabilities)
     source = args.template.resolve()
     destination = args.destination.resolve()
     (destination / 'assets/model').mkdir(parents=True, exist_ok=True)
-    shutil.copy2(experiment / 'best.pt', destination / 'assets/model/unet_r18_debris_lite.pt')
+    checkpoints = ['assets/model/unet_r18_debris_lite.pt']
+    if args.ensemble:
+        checkpoints.append('assets/model/ensemble.pt')
+    for path, checkpoint in zip(experiments, checkpoints):
+        shutil.copy2(path / 'best.pt', destination / checkpoint)
     for name in ('requirements.txt', 'LICENSE', 'NOTICE'):
         shutil.copy2(source / name, destination / name)
     notebook = json.loads((source / 'predict.ipynb').read_text(encoding='utf-8'))
@@ -41,11 +67,18 @@ def main():
             continue
         if 'def predict_batch' in content:
             content = content.replace('(im / 255.0 - MEAN) / STD', '(im.astype(np.float32) / 255.0 - MEAN) / STD')
-            old = 'return (prob[:, 1] > prob[:, 0]).cpu().numpy()'
-            new = 'p = prob[:, 1]\n'
-            if selected['tta']:
-                new += '    for dims in ((2,), (3,), (2, 3)):\n        p += torch.softmax(model(x.flip(dims)), dim=1)[:, 1].flip(tuple(d - 1 for d in dims))\n    p /= 4\n'
-            new += f"    return (p > {selected['threshold']}).cpu().numpy()"
+            start, end = content.index('def load_model('), content.index('def read_image(')
+            loader = 'def load_model(device: str):\n    models = torch.nn.ModuleList()\n'
+            loader += f'    for checkpoint in {checkpoints!r}:\n'
+            loader += '        model = smp.Unet(encoder_name="resnet18", encoder_weights=None, in_channels=3, classes=2)\n'
+            loader += '        model.load_state_dict(torch.load(checkpoint, map_location="cpu", weights_only=True)["state_dict"])\n'
+            loader += '        models.append(model)\n    return models.to(device).eval()\n\n\n'
+            content = content[:start] + loader + content[end:]
+            old = 'prob = torch.softmax(model(x), dim=1)\n    return (prob[:, 1] > prob[:, 0]).cpu().numpy()'
+            new = f'probability = 0\n    for member, tta in zip(model, {[bool(c["tta"]) for c in selections]!r}):\n'
+            new += '        p = torch.softmax(member(x), dim=1)[:, 1]\n'
+            new += '        if tta:\n            for dims in ((2,), (3,), (2, 3)):\n                p += torch.softmax(member(x.flip(dims)), dim=1)[:, 1].flip(tuple(d - 1 for d in dims))\n            p /= 4\n'
+            new += f'        probability += p\n    return (probability / len(model) > {threshold}).cpu().numpy()'
             assert old in content
             content = content.replace(old, new)
         cell['source'] = content.splitlines(keepends=True)
@@ -55,10 +88,8 @@ def main():
         cells.append(cell)
     notebook['cells'] = cells
     (destination / 'predict.ipynb').write_text(json.dumps(notebook, ensure_ascii=False, indent=1), encoding='utf-8')
-    smoke = experiment / 'smoke'
+    smoke = destination / 'smoke'
     (smoke / 'images').mkdir(parents=True, exist_ok=True)
-    data = np.load(experiment / 'data.npz')
-    val = np.flatnonzero(data['splits'] == 'val')
     positive = data['masks'][val].any(axis=(1, 2))
     positions = np.r_[np.flatnonzero(positive)[:2], np.flatnonzero(~positive)[:2]]
     ids = val[positions]
@@ -77,11 +108,10 @@ def main():
     for cell in cells:
         if cell['cell_type'] == 'code':
             exec(compile(''.join(cell['source']), 'predict.ipynb', 'exec'), scope)
-    expected_prob = np.load(experiment / selected.get('probability_file', selected['name'] + '_prob.npy'))[positions]
     rows = list(csv.DictReader((smoke / 'prediction.csv').open()))
     assert [row['id'] for row in rows] == [f'check{i}' for i in ids]
-    for row, probability in zip(rows, expected_prob):
-        expected = probability > selected['threshold']
+    for row, probability in zip(rows, expected_prob[positions]):
+        expected = probability > threshold
         if expected.sum() < 50:
             expected[:] = False
         decoded = np.zeros(65536, dtype=bool)
@@ -100,7 +130,7 @@ def main():
     archive = destination.with_suffix('.zip')
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as output:
         for path in destination.rglob('*'):
-            if path.is_file():
+            if path.is_file() and 'smoke' not in path.relative_to(destination).parts:
                 output.write(path, path.relative_to(destination))
     with zipfile.ZipFile(archive) as output:
         assert output.testzip() is None

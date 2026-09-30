@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-30",
+  "method": "equal probability average",
+  "sources": [
+    {
+      "experiment": "review_gpu_20260927/experiment",
+      "weight": 0.5,
+      "tta": true
+    },
+    {
+      "experiment": "experiment_combined_cpu",
+      "weight": 0.5,
+      "tta": false
+    }
+  ],
+  "threshold": 0.2,
+  "validation_crops": 280,
+  "validation_inputs_and_targets_identical": true,
+  "cached_prediction_metrics": {
+    "macro_f1": 0.7098214285714286,
+    "shape_f1": 0.23227369206927073,
+    "combined": 0.47104756032034967,
+    "confusion": [
+      [
+        129,
+        37
+      ],
+      [
+        41,
+        73
+      ]
+    ]
+  },
+  "gpu_only_validation_combined": 0.45473298015100805,
+  "gpu_only_public_score_reported_by_user": 0.3912842453,
+  "ensemble_public_score": null,
+  "notebook_smoke_rows": 4,
+  "smoke_predictions_match_cached_ensemble": true,
+  "rle_roundtrip_ok": true,
+  "zip_crc_ok": true,
+  "packaged_checkpoint_hashes_match_sources": true,
+  "additional_training_required": false,
+  "note": "Exploratory selection on the existing spatial drone validation set, not an independent test. Public improvement is unverified.",
+  "archive": "submission_ensemble_t020.zip"
+}

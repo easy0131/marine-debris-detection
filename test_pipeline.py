@@ -8,10 +8,11 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import numpy as np
+import torch
 
 from improve_model import score_masks, self_check as score_check
 from prepare_coastal import close, self_check as geometry_check
-from train_spatial import augment, evaluation_data
+from train_spatial import augment, evaluation_data, refinement_loss
 
 
 geometry_check()  # Class-code collision, georeferencing and polygon holes.
@@ -45,8 +46,20 @@ for _ in range(32):
 assert retained >= 16
 print('Geometry, scoring, unbiased validation crops and training augmentation checks passed.')
 
+# Refinement must learn both empty and positive patches without NaNs or favoring inverted masks.
+for truth in (torch.zeros((2, 16, 16), dtype=torch.long),
+              torch.from_numpy(np.stack([mask, empty]).astype(np.int64))):
+    correct = torch.stack([1 - truth.float(), truth.float()], dim=1) * 8 - 4
+    wrong = (-correct).requires_grad_()
+    loss = refinement_loss(wrong, truth)
+    assert torch.isfinite(loss) and loss > refinement_loss(correct, truth)
+    loss.backward()
+    assert torch.isfinite(wrong.grad).all() and wrong.grad.abs().sum() > 0
+print('Refinement loss handles empty masks and produces useful finite gradients.')
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--colab-notebook', type=Path)
+parser.add_argument('--kaggle-notebook', type=Path)
 args = parser.parse_args()
 if args.colab_notebook:
     notebook = json.loads(args.colab_notebook.read_text(encoding='utf-8'))
@@ -74,3 +87,34 @@ if args.colab_notebook:
                 assert not malicious
                 assert (work / 'data/data.npz').read_bytes() == b'new upload'
     print('Colab uses the new upload despite duplicate filenames and rejects ZIP path traversal.')
+if args.kaggle_notebook:
+    import shutil
+    notebook = json.loads(args.kaggle_notebook.read_text(encoding='utf-8'))
+    source = next(''.join(c['source']) for c in notebook['cells'] if "Path('/kaggle/input')" in ''.join(c['source']))
+    code = source[source.index('work = Path'):source.index('\nimport os')]
+    code = code.replace("Path('/kaggle/working/coastal').resolve()", 'test_work').replace("Path('/kaggle/input')", 'test_input')
+    with tempfile.TemporaryDirectory(prefix='kaggle-input-check-', dir=Path(__file__).parent) as temporary:
+        for mode in ('folder', 'zip', 'bin', 'unsafe_zip'):
+            incoming = Path(temporary) / mode
+            incoming.mkdir()
+            work = incoming / 'output'
+            files_to_write = {'data/data.npz': b'new data', 'data/data_report.json': b'{}', 'train_spatial.py': b'pass'}
+            if mode == 'folder':
+                for name, payload in files_to_write.items():
+                    file = incoming / 'dataset' / name
+                    file.parent.mkdir(parents=True, exist_ok=True)
+                    file.write_bytes(payload)
+            else:
+                name = 'coastal_training_bundle.bin' if mode == 'bin' else 'coastal_training_bundle.zip'
+                with zipfile.ZipFile(incoming / name, 'w') as archive:
+                    for name, payload in files_to_write.items():
+                        archive.writestr(name, payload)
+                    if mode == 'unsafe_zip':
+                        archive.writestr('../outside.txt', b'forbidden')
+            try:
+                exec(compile(code, 'kaggle-input-cell', 'exec'), dict(Path=Path, shutil=shutil, zipfile=zipfile, test_work=work, test_input=incoming))
+            except AssertionError:
+                assert mode == 'unsafe_zip'
+            else:
+                assert mode != 'unsafe_zip' and (work / 'data/data.npz').read_bytes() == b'new data'
+    print('Kaggle handles extracted datasets and ZIPs and rejects unsafe archive paths.')

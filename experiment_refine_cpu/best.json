@@ -1,0 +1,19 @@
+{
+  "name": "epoch1",
+  "threshold": 0.1,
+  "tta": false,
+  "macro_f1": 0.6770212994259348,
+  "shape_f1": 0.23162153432661817,
+  "combined": 0.4543214168762765,
+  "confusion": [
+    [
+      128,
+      38
+    ],
+    [
+      48,
+      66
+    ]
+  ],
+  "probability_file": "best_prob.npy"
+}
