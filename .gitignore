@@ -6,6 +6,10 @@ visual_check.html
 *.npz
 *.npy
 *.log
-experiment_*/smoke/
+**/smoke/
 .env
 .env.*
+experiment_*/**/*.jpg
+experiment_*/**/*.png
+colab_bundle/
+data_request/

@@ -1,0 +1,3466 @@
+[
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.4922094508301405,
+    "shape_f1": 0.011751457645976755,
+    "combined": 0.25198045423805865,
+    "confusion": [
+      [
+        64,
+        102
+      ],
+      [
+        40,
+        74
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.48912280701754385,
+    "shape_f1": 0.010895433447066834,
+    "combined": 0.2500091202323053,
+    "confusion": [
+      [
+        66,
+        100
+      ],
+      [
+        43,
+        71
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.49642214824168673,
+    "shape_f1": 0.010106096021808307,
+    "combined": 0.25326412213174754,
+    "confusion": [
+      [
+        69,
+        97
+      ],
+      [
+        44,
+        70
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.5070422535211268,
+    "shape_f1": 0.010022337981240135,
+    "combined": 0.2585322957511834,
+    "confusion": [
+      [
+        73,
+        93
+      ],
+      [
+        45,
+        69
+      ]
+    ]
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.5136653895274584,
+    "shape_f1": 0.00944448451110959,
+    "combined": 0.261554937019284,
+    "confusion": [
+      [
+        77,
+        89
+      ],
+      [
+        47,
+        67
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "initial_checkpoint",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.5012750035238791,
+    "shape_f1": 0.009280131856171001,
+    "combined": 0.2552775676900251,
+    "confusion": [
+      [
+        80,
+        86
+      ],
+      [
+        53,
+        61
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.3392207792207792,
+    "shape_f1": 0.08014450918530934,
+    "combined": 0.20968264420304428,
+    "confusion": [
+      [
+        8,
+        158
+      ],
+      [
+        1,
+        113
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.4129979035639413,
+    "shape_f1": 0.09880805978642714,
+    "combined": 0.2559029816751842,
+    "confusion": [
+      [
+        21,
+        145
+      ],
+      [
+        2,
+        112
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.44008614059375484,
+    "shape_f1": 0.10524489009265299,
+    "combined": 0.27266551534320393,
+    "confusion": [
+      [
+        27,
+        139
+      ],
+      [
+        4,
+        110
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.4525225820665345,
+    "shape_f1": 0.10593034292437158,
+    "combined": 0.279226462495453,
+    "confusion": [
+      [
+        31,
+        135
+      ],
+      [
+        7,
+        107
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.4857111987466911,
+    "shape_f1": 0.10681173348341134,
+    "combined": 0.2962614661150512,
+    "confusion": [
+      [
+        39,
+        127
+      ],
+      [
+        9,
+        105
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.5281576987890426,
+    "shape_f1": 0.10271189040643662,
+    "combined": 0.3154347945977396,
+    "confusion": [
+      [
+        54,
+        112
+      ],
+      [
+        17,
+        97
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.4909681661702704,
+    "shape_f1": 0.14289307472712723,
+    "combined": 0.3169306204486988,
+    "confusion": [
+      [
+        55,
+        111
+      ],
+      [
+        30,
+        84
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.5903280455875558,
+    "shape_f1": 0.11840118713477324,
+    "combined": 0.3543646163611645,
+    "confusion": [
+      [
+        94,
+        72
+      ],
+      [
+        42,
+        72
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6502976190476191,
+    "shape_f1": 0.09631867452297795,
+    "combined": 0.3733081467852985,
+    "confusion": [
+      [
+        121,
+        45
+      ],
+      [
+        49,
+        65
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.628306715386405,
+    "shape_f1": 0.07940017946499965,
+    "combined": 0.35385344742570235,
+    "confusion": [
+      [
+        128,
+        38
+      ],
+      [
+        59,
+        55
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6135428989916061,
+    "shape_f1": 0.07134596794216476,
+    "combined": 0.3424444334668854,
+    "confusion": [
+      [
+        134,
+        32
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6076175303506365,
+    "shape_f1": 0.06149461156682219,
+    "combined": 0.33455607095872936,
+    "confusion": [
+      [
+        144,
+        22
+      ],
+      [
+        73,
+        41
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.4969351088564785,
+    "shape_f1": 0.19115959124495802,
+    "combined": 0.3440473500507183,
+    "confusion": [
+      [
+        46,
+        120
+      ],
+      [
+        16,
+        98
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.5624775859419028,
+    "shape_f1": 0.17807529726694588,
+    "combined": 0.3702764416044243,
+    "confusion": [
+      [
+        70,
+        96
+      ],
+      [
+        26,
+        88
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6313481867801767,
+    "shape_f1": 0.17165881807151626,
+    "combined": 0.4015035024258465,
+    "confusion": [
+      [
+        95,
+        71
+      ],
+      [
+        32,
+        82
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6296438982419643,
+    "shape_f1": 0.16854181769736873,
+    "combined": 0.39909285796966654,
+    "confusion": [
+      [
+        100,
+        66
+      ],
+      [
+        37,
+        77
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6559351191939051,
+    "shape_f1": 0.16400542423850192,
+    "combined": 0.40997027171620354,
+    "confusion": [
+      [
+        109,
+        57
+      ],
+      [
+        38,
+        76
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6715874620829121,
+    "shape_f1": 0.1354141111617861,
+    "combined": 0.4035007866223491,
+    "confusion": [
+      [
+        129,
+        37
+      ],
+      [
+        50,
+        64
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.5931854709096753,
+    "shape_f1": 0.14726822256081387,
+    "combined": 0.3702268467352446,
+    "confusion": [
+      [
+        96,
+        70
+      ],
+      [
+        43,
+        71
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6294095402733509,
+    "shape_f1": 0.10904340064165534,
+    "combined": 0.3692264704575031,
+    "confusion": [
+      [
+        124,
+        42
+      ],
+      [
+        56,
+        58
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.636617749825297,
+    "shape_f1": 0.09512402920194064,
+    "combined": 0.3658708895136188,
+    "confusion": [
+      [
+        140,
+        26
+      ],
+      [
+        65,
+        49
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6407927927927928,
+    "shape_f1": 0.08935236772910457,
+    "combined": 0.3650725802609487,
+    "confusion": [
+      [
+        143,
+        23
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6414745994878208,
+    "shape_f1": 0.08683654275473099,
+    "combined": 0.3641555711212759,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6428571428571428,
+    "shape_f1": 0.08070906483788334,
+    "combined": 0.36178310384751305,
+    "confusion": [
+      [
+        154,
+        12
+      ],
+      [
+        72,
+        42
+      ]
+    ]
+  },
+  {
+    "name": "epoch5",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6296935196365936,
+    "shape_f1": 0.11569992046456848,
+    "combined": 0.372696720050581,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "epoch5",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6140014385039558,
+    "shape_f1": 0.09934606023066381,
+    "combined": 0.35667374936730983,
+    "confusion": [
+      [
+        148,
+        18
+      ],
+      [
+        74,
+        40
+      ]
+    ]
+  },
+  {
+    "name": "epoch5",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.5831006886283268,
+    "shape_f1": 0.08440674728708472,
+    "combined": 0.33375371795770575,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        81,
+        33
+      ]
+    ]
+  },
+  {
+    "name": "epoch5",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.5734958111195735,
+    "shape_f1": 0.0763832953899,
+    "combined": 0.3249395532547367,
+    "confusion": [
+      [
+        154,
+        12
+      ],
+      [
+        84,
+        30
+      ]
+    ]
+  },
+  {
+    "name": "epoch5",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.575593395252838,
+    "shape_f1": 0.06914532356276877,
+    "combined": 0.3223693594078034,
+    "confusion": [
+      [
+        157,
+        9
+      ],
+      [
+        85,
+        29
+      ]
+    ]
+  },
+  {
+    "name": "epoch5",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.5526346131673008,
+    "shape_f1": 0.057013583607044005,
+    "combined": 0.3048240983871724,
+    "confusion": [
+      [
+        158,
+        8
+      ],
+      [
+        89,
+        25
+      ]
+    ]
+  },
+  {
+    "name": "epoch6",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6712357682819035,
+    "shape_f1": 0.19312173370107677,
+    "combined": 0.4321787509914901,
+    "confusion": [
+      [
+        121,
+        45
+      ],
+      [
+        44,
+        70
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "epoch6",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6450904174412708,
+    "shape_f1": 0.14623880586086552,
+    "combined": 0.39566461165106814,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        62,
+        52
+      ]
+    ]
+  },
+  {
+    "name": "epoch6",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6569369369369369,
+    "shape_f1": 0.13958353152762137,
+    "combined": 0.39826023423227913,
+    "confusion": [
+      [
+        145,
+        21
+      ],
+      [
+        64,
+        50
+      ]
+    ]
+  },
+  {
+    "name": "epoch6",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.653056166999519,
+    "shape_f1": 0.13318725550191823,
+    "combined": 0.3931217112507186,
+    "confusion": [
+      [
+        147,
+        19
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch6",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6384415584415585,
+    "shape_f1": 0.1290044365638981,
+    "combined": 0.3837229975027283,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch6",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6232646321325913,
+    "shape_f1": 0.11558882759295604,
+    "combined": 0.3694267298627737,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        75,
+        39
+      ]
+    ]
+  },
+  {
+    "name": "epoch7",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.5497932724210097,
+    "shape_f1": 0.18412183513276925,
+    "combined": 0.3669575537768895,
+    "confusion": [
+      [
+        80,
+        86
+      ],
+      [
+        40,
+        74
+      ]
+    ]
+  },
+  {
+    "name": "epoch7",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.5650147584278391,
+    "shape_f1": 0.16561201145122306,
+    "combined": 0.3653133849395311,
+    "confusion": [
+      [
+        97,
+        69
+      ],
+      [
+        51,
+        63
+      ]
+    ]
+  },
+  {
+    "name": "epoch7",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6162393048662027,
+    "shape_f1": 0.16073872007560247,
+    "combined": 0.3884890124709026,
+    "confusion": [
+      [
+        117,
+        49
+      ],
+      [
+        54,
+        60
+      ]
+    ]
+  },
+  {
+    "name": "epoch7",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6142833990600183,
+    "shape_f1": 0.1534224297908153,
+    "combined": 0.3838529144254168,
+    "confusion": [
+      [
+        122,
+        44
+      ],
+      [
+        58,
+        56
+      ]
+    ]
+  },
+  {
+    "name": "epoch7",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6252294021056699,
+    "shape_f1": 0.14701703820867443,
+    "combined": 0.38612322015717215,
+    "confusion": [
+      [
+        130,
+        36
+      ],
+      [
+        61,
+        53
+      ]
+    ]
+  },
+  {
+    "name": "epoch7",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6384738716497113,
+    "shape_f1": 0.14079614819688804,
+    "combined": 0.38963500992329964,
+    "confusion": [
+      [
+        139,
+        27
+      ],
+      [
+        64,
+        50
+      ]
+    ]
+  },
+  {
+    "name": "epoch8",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6584255042290176,
+    "shape_f1": 0.15843479469471577,
+    "combined": 0.4084301494618667,
+    "confusion": [
+      [
+        129,
+        37
+      ],
+      [
+        53,
+        61
+      ]
+    ]
+  },
+  {
+    "name": "epoch8",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6450904174412708,
+    "shape_f1": 0.12988972902565651,
+    "combined": 0.3874900732334637,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        62,
+        52
+      ]
+    ]
+  },
+  {
+    "name": "epoch8",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6347005777694943,
+    "shape_f1": 0.11950665591269372,
+    "combined": 0.377103616841094,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch8",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6263874836874441,
+    "shape_f1": 0.1078251277027713,
+    "combined": 0.3671063056951077,
+    "confusion": [
+      [
+        145,
+        21
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch8",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6164611994520874,
+    "shape_f1": 0.10158551547801091,
+    "combined": 0.35902335746504915,
+    "confusion": [
+      [
+        147,
+        19
+      ],
+      [
+        73,
+        41
+      ]
+    ]
+  },
+  {
+    "name": "epoch8",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6258503401360545,
+    "shape_f1": 0.09503378986699111,
+    "combined": 0.36044206500152276,
+    "confusion": [
+      [
+        152,
+        14
+      ],
+      [
+        74,
+        40
+      ]
+    ]
+  },
+  {
+    "name": "epoch9",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.5142664802444202,
+    "shape_f1": 0.2099185315863352,
+    "combined": 0.3620925059153777,
+    "confusion": [
+      [
+        56,
+        110
+      ],
+      [
+        24,
+        90
+      ]
+    ]
+  },
+  {
+    "name": "epoch9",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.5713410900183711,
+    "shape_f1": 0.20730906650493713,
+    "combined": 0.3893250782616541,
+    "confusion": [
+      [
+        78,
+        88
+      ],
+      [
+        32,
+        82
+      ]
+    ]
+  },
+  {
+    "name": "epoch9",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6013289036544851,
+    "shape_f1": 0.19169205421318017,
+    "combined": 0.3965104789338326,
+    "confusion": [
+      [
+        95,
+        71
+      ],
+      [
+        40,
+        74
+      ]
+    ]
+  },
+  {
+    "name": "epoch9",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6197177633195794,
+    "shape_f1": 0.17684516345425041,
+    "combined": 0.3982814633869149,
+    "confusion": [
+      [
+        104,
+        62
+      ],
+      [
+        43,
+        71
+      ]
+    ]
+  },
+  {
+    "name": "epoch9",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.632950553195952,
+    "shape_f1": 0.1713853824660822,
+    "combined": 0.40216796783101705,
+    "confusion": [
+      [
+        113,
+        53
+      ],
+      [
+        47,
+        67
+      ]
+    ]
+  },
+  {
+    "name": "epoch9",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6363100737824556,
+    "shape_f1": 0.15965388488505236,
+    "combined": 0.397981979333754,
+    "confusion": [
+      [
+        122,
+        44
+      ],
+      [
+        53,
+        61
+      ]
+    ]
+  },
+  {
+    "name": "epoch10",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6510212759717884,
+    "shape_f1": 0.14110837918947555,
+    "combined": 0.396064827580632,
+    "confusion": [
+      [
+        148,
+        18
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "epoch10",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6391752577319587,
+    "shape_f1": 0.11908560608110469,
+    "combined": 0.37913043190653173,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        71,
+        43
+      ]
+    ]
+  },
+  {
+    "name": "epoch10",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6232646321325913,
+    "shape_f1": 0.10127175241315316,
+    "combined": 0.3622681922728722,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        75,
+        39
+      ]
+    ]
+  },
+  {
+    "name": "epoch10",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.617644802454929,
+    "shape_f1": 0.09956766579684205,
+    "combined": 0.35860623412588555,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        76,
+        38
+      ]
+    ]
+  },
+  {
+    "name": "epoch10",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.617644802454929,
+    "shape_f1": 0.09698217799300292,
+    "combined": 0.35731349022396597,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        76,
+        38
+      ]
+    ]
+  },
+  {
+    "name": "epoch10",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6004714932688132,
+    "shape_f1": 0.09339377322973534,
+    "combined": 0.34693263324927426,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        79,
+        35
+      ]
+    ]
+  },
+  {
+    "name": "epoch11",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6902483544443829,
+    "shape_f1": 0.18807931840133083,
+    "combined": 0.4391638364228569,
+    "confusion": [
+      [
+        139,
+        27
+      ],
+      [
+        53,
+        61
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "epoch11",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6469104665825978,
+    "shape_f1": 0.1529385011153067,
+    "combined": 0.39992448384895224,
+    "confusion": [
+      [
+        145,
+        21
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch11",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6458615212659569,
+    "shape_f1": 0.14281786818672987,
+    "combined": 0.39433969472634334,
+    "confusion": [
+      [
+        148,
+        18
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch11",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6489209482084642,
+    "shape_f1": 0.1371416448867113,
+    "combined": 0.3930312965475878,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch11",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6475665308079597,
+    "shape_f1": 0.12937770836690524,
+    "combined": 0.38847211958743244,
+    "confusion": [
+      [
+        152,
+        14
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch11",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6258503401360545,
+    "shape_f1": 0.11781723413276905,
+    "combined": 0.37183378713441173,
+    "confusion": [
+      [
+        152,
+        14
+      ],
+      [
+        74,
+        40
+      ]
+    ]
+  },
+  {
+    "name": "epoch12",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6607182198722186,
+    "shape_f1": 0.17719944397326384,
+    "combined": 0.4189588319227412,
+    "confusion": [
+      [
+        134,
+        32
+      ],
+      [
+        56,
+        58
+      ]
+    ]
+  },
+  {
+    "name": "epoch12",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6446041729060596,
+    "shape_f1": 0.15284408418509798,
+    "combined": 0.3987241285455788,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        64,
+        50
+      ]
+    ]
+  },
+  {
+    "name": "epoch12",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.642810011877007,
+    "shape_f1": 0.13312792703657078,
+    "combined": 0.38796896945678894,
+    "confusion": [
+      [
+        147,
+        19
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch12",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6467532467532467,
+    "shape_f1": 0.12510984367080044,
+    "combined": 0.3859315452120236,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        69,
+        45
+      ]
+    ]
+  },
+  {
+    "name": "epoch12",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6307839846559578,
+    "shape_f1": 0.12114290576527854,
+    "combined": 0.37596344521061814,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        72,
+        42
+      ]
+    ]
+  },
+  {
+    "name": "epoch12",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.608843537414966,
+    "shape_f1": 0.11193146128284999,
+    "combined": 0.360387499348908,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        76,
+        38
+      ]
+    ]
+  },
+  {
+    "name": "epoch13",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.668560606060606,
+    "shape_f1": 0.13943278102405313,
+    "combined": 0.40399669354232953,
+    "confusion": [
+      [
+        152,
+        14
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch13",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6612447909665278,
+    "shape_f1": 0.13135972004609403,
+    "combined": 0.39630225550631093,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch13",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.628833935183069,
+    "shape_f1": 0.11004300086695716,
+    "combined": 0.36943846802501307,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        74,
+        40
+      ]
+    ]
+  },
+  {
+    "name": "epoch13",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6205962059620597,
+    "shape_f1": 0.10318135486952026,
+    "combined": 0.36188878041579,
+    "confusion": [
+      [
+        154,
+        12
+      ],
+      [
+        76,
+        38
+      ]
+    ]
+  },
+  {
+    "name": "epoch13",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6032495749102589,
+    "shape_f1": 0.09822681529875915,
+    "combined": 0.350738195104509,
+    "confusion": [
+      [
+        156,
+        10
+      ],
+      [
+        80,
+        34
+      ]
+    ]
+  },
+  {
+    "name": "epoch13",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.5912668189895913,
+    "shape_f1": 0.09237490141680864,
+    "combined": 0.34182086020319996,
+    "confusion": [
+      [
+        156,
+        10
+      ],
+      [
+        82,
+        32
+      ]
+    ]
+  },
+  {
+    "name": "epoch14",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.5926701036190087,
+    "shape_f1": 0.22716064905786298,
+    "combined": 0.4099153763384359,
+    "confusion": [
+      [
+        86,
+        80
+      ],
+      [
+        34,
+        80
+      ]
+    ]
+  },
+  {
+    "name": "epoch14",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.628125,
+    "shape_f1": 0.21310717907435917,
+    "combined": 0.4206160895371796,
+    "confusion": [
+      [
+        109,
+        57
+      ],
+      [
+        45,
+        69
+      ]
+    ]
+  },
+  {
+    "name": "epoch14",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6354166666666667,
+    "shape_f1": 0.19252281548445282,
+    "combined": 0.4139697410755598,
+    "confusion": [
+      [
+        119,
+        47
+      ],
+      [
+        51,
+        63
+      ]
+    ]
+  },
+  {
+    "name": "epoch14",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6406417112299465,
+    "shape_f1": 0.18918331784094988,
+    "combined": 0.4149125145354482,
+    "confusion": [
+      [
+        122,
+        44
+      ],
+      [
+        52,
+        62
+      ]
+    ]
+  },
+  {
+    "name": "epoch14",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6204727824766862,
+    "shape_f1": 0.1795729956363457,
+    "combined": 0.40002288905651595,
+    "confusion": [
+      [
+        124,
+        42
+      ],
+      [
+        58,
+        56
+      ]
+    ]
+  },
+  {
+    "name": "epoch14",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6214297786040224,
+    "shape_f1": 0.1554130049441735,
+    "combined": 0.38842139177409796,
+    "confusion": [
+      [
+        135,
+        31
+      ],
+      [
+        65,
+        49
+      ]
+    ]
+  },
+  {
+    "name": "epoch15",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6418396418396419,
+    "shape_f1": 0.15772409573339524,
+    "combined": 0.39978186878651856,
+    "confusion": [
+      [
+        145,
+        21
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "epoch15",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6140014385039558,
+    "shape_f1": 0.13623184530058427,
+    "combined": 0.37511664190227006,
+    "confusion": [
+      [
+        148,
+        18
+      ],
+      [
+        74,
+        40
+      ]
+    ]
+  },
+  {
+    "name": "epoch15",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.5861049519586105,
+    "shape_f1": 0.12375504098790654,
+    "combined": 0.3549299964732585,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        80,
+        34
+      ]
+    ]
+  },
+  {
+    "name": "epoch15",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.580287740878676,
+    "shape_f1": 0.1174989065274269,
+    "combined": 0.34889332370305143,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        81,
+        33
+      ]
+    ]
+  },
+  {
+    "name": "epoch15",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.57125,
+    "shape_f1": 0.10246793188848245,
+    "combined": 0.33685896594424125,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        83,
+        31
+      ]
+    ]
+  },
+  {
+    "name": "epoch15",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.5618845916770716,
+    "shape_f1": 0.09106645866865262,
+    "combined": 0.3264755251728621,
+    "confusion": [
+      [
+        152,
+        14
+      ],
+      [
+        85,
+        29
+      ]
+    ]
+  },
+  {
+    "name": "epoch16",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6344898660254208,
+    "shape_f1": 0.1727071726033049,
+    "combined": 0.40359851931436286,
+    "confusion": [
+      [
+        130,
+        36
+      ],
+      [
+        59,
+        55
+      ]
+    ]
+  },
+  {
+    "name": "epoch16",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6181762195926627,
+    "shape_f1": 0.16106382147076442,
+    "combined": 0.3896200205317135,
+    "confusion": [
+      [
+        144,
+        22
+      ],
+      [
+        71,
+        43
+      ]
+    ]
+  },
+  {
+    "name": "epoch16",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6398250578852586,
+    "shape_f1": 0.15727655582050787,
+    "combined": 0.39855080685288324,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        72,
+        42
+      ]
+    ]
+  },
+  {
+    "name": "epoch16",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6205962059620597,
+    "shape_f1": 0.1458746096066863,
+    "combined": 0.383235407784373,
+    "confusion": [
+      [
+        154,
+        12
+      ],
+      [
+        76,
+        38
+      ]
+    ]
+  },
+  {
+    "name": "epoch16",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6120736624169119,
+    "shape_f1": 0.14035092770170823,
+    "combined": 0.37621229505931003,
+    "confusion": [
+      [
+        155,
+        11
+      ],
+      [
+        78,
+        36
+      ]
+    ]
+  },
+  {
+    "name": "epoch16",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.60625,
+    "shape_f1": 0.13114803079238574,
+    "combined": 0.3686990153961929,
+    "confusion": [
+      [
+        155,
+        11
+      ],
+      [
+        79,
+        35
+      ]
+    ]
+  },
+  {
+    "name": "epoch17",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6920892551399658,
+    "shape_f1": 0.1811997050054176,
+    "combined": 0.4366444800726917,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        54,
+        60
+      ]
+    ]
+  },
+  {
+    "name": "epoch17",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6743996743996744,
+    "shape_f1": 0.1637574019275576,
+    "combined": 0.419078538163616,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        63,
+        51
+      ]
+    ]
+  },
+  {
+    "name": "epoch17",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6705688569915877,
+    "shape_f1": 0.1511629757242085,
+    "combined": 0.41086591635789815,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        65,
+        49
+      ]
+    ]
+  },
+  {
+    "name": "epoch17",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6602746212121212,
+    "shape_f1": 0.14481054555826314,
+    "combined": 0.40254258338519217,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "epoch17",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6528804648175531,
+    "shape_f1": 0.1370821487006566,
+    "combined": 0.39498130675910487,
+    "confusion": [
+      [
+        152,
+        14
+      ],
+      [
+        69,
+        45
+      ]
+    ]
+  },
+  {
+    "name": "epoch17",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6368024132730015,
+    "shape_f1": 0.12673530444025632,
+    "combined": 0.3817688588566289,
+    "confusion": [
+      [
+        152,
+        14
+      ],
+      [
+        72,
+        42
+      ]
+    ]
+  },
+  {
+    "name": "epoch18",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6779334525145859,
+    "shape_f1": 0.18157947873232183,
+    "combined": 0.4297564656234539,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        55,
+        59
+      ]
+    ]
+  },
+  {
+    "name": "epoch18",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.653056166999519,
+    "shape_f1": 0.15173654709836754,
+    "combined": 0.4023963570489433,
+    "confusion": [
+      [
+        147,
+        19
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch18",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6437026515151515,
+    "shape_f1": 0.138243351216432,
+    "combined": 0.3909730013657917,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        69,
+        45
+      ]
+    ]
+  },
+  {
+    "name": "epoch18",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6384415584415585,
+    "shape_f1": 0.13623181149043523,
+    "combined": 0.3873366849659968,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch18",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6414745994878208,
+    "shape_f1": 0.13419691539006587,
+    "combined": 0.38783575743894333,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch18",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6307839846559578,
+    "shape_f1": 0.12176635584951079,
+    "combined": 0.37627517025273427,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        72,
+        42
+      ]
+    ]
+  },
+  {
+    "name": "epoch19",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6683893195521102,
+    "shape_f1": 0.19385148859505752,
+    "combined": 0.4311204040735839,
+    "confusion": [
+      [
+        128,
+        38
+      ],
+      [
+        50,
+        64
+      ]
+    ]
+  },
+  {
+    "name": "epoch19",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6747607721666021,
+    "shape_f1": 0.1832104816743291,
+    "combined": 0.4289856269204656,
+    "confusion": [
+      [
+        137,
+        29
+      ],
+      [
+        55,
+        59
+      ]
+    ]
+  },
+  {
+    "name": "epoch19",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6498770635756936,
+    "shape_f1": 0.17024389838381887,
+    "combined": 0.4100604809797562,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        61,
+        53
+      ]
+    ]
+  },
+  {
+    "name": "epoch19",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6433423913043479,
+    "shape_f1": 0.16073983722791124,
+    "combined": 0.40204111426612954,
+    "confusion": [
+      [
+        139,
+        27
+      ],
+      [
+        63,
+        51
+      ]
+    ]
+  },
+  {
+    "name": "epoch19",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6476778769160375,
+    "shape_f1": 0.16004091384386798,
+    "combined": 0.40385939537995275,
+    "confusion": [
+      [
+        142,
+        24
+      ],
+      [
+        64,
+        50
+      ]
+    ]
+  },
+  {
+    "name": "epoch19",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.639766081871345,
+    "shape_f1": 0.15697315905272335,
+    "combined": 0.39836962046203417,
+    "confusion": [
+      [
+        146,
+        20
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch20",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6640377485675767,
+    "shape_f1": 0.20840033357705479,
+    "combined": 0.43621904107231574,
+    "confusion": [
+      [
+        128,
+        38
+      ],
+      [
+        51,
+        63
+      ]
+    ]
+  },
+  {
+    "name": "epoch20",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6293166582164385,
+    "shape_f1": 0.16913145969304805,
+    "combined": 0.3992240589547432,
+    "confusion": [
+      [
+        136,
+        30
+      ],
+      [
+        64,
+        50
+      ]
+    ]
+  },
+  {
+    "name": "epoch20",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6126584805830089,
+    "shape_f1": 0.1640374982443169,
+    "combined": 0.3883479894136629,
+    "confusion": [
+      [
+        137,
+        29
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch20",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6195652173913043,
+    "shape_f1": 0.15566254348375488,
+    "combined": 0.3876138804375296,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        69,
+        45
+      ]
+    ]
+  },
+  {
+    "name": "epoch20",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6204026297759442,
+    "shape_f1": 0.1513077891966181,
+    "combined": 0.38585520948628116,
+    "confusion": [
+      [
+        143,
+        23
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch20",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6293899641155363,
+    "shape_f1": 0.14944968761086003,
+    "combined": 0.3894198258631981,
+    "confusion": [
+      [
+        146,
+        20
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch21",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6354166666666667,
+    "shape_f1": 0.18288882897102968,
+    "combined": 0.4091527478188482,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        64,
+        50
+      ]
+    ]
+  },
+  {
+    "name": "epoch21",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6345987477822256,
+    "shape_f1": 0.1582864729720706,
+    "combined": 0.3964426103771481,
+    "confusion": [
+      [
+        146,
+        20
+      ],
+      [
+        69,
+        45
+      ]
+    ]
+  },
+  {
+    "name": "epoch21",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6293899641155363,
+    "shape_f1": 0.15216328598942677,
+    "combined": 0.3907766250524815,
+    "confusion": [
+      [
+        146,
+        20
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch21",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6331367994759097,
+    "shape_f1": 0.14993811312911248,
+    "combined": 0.39153745630251113,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        71,
+        43
+      ]
+    ]
+  },
+  {
+    "name": "epoch21",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6117688287547043,
+    "shape_f1": 0.13523973913105583,
+    "combined": 0.37350428394288004,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        76,
+        38
+      ]
+    ]
+  },
+  {
+    "name": "epoch21",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6004602991944764,
+    "shape_f1": 0.12780878437487256,
+    "combined": 0.36413454178467447,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        78,
+        36
+      ]
+    ]
+  },
+  {
+    "name": "epoch22",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6467619848612278,
+    "shape_f1": 0.2090791047757839,
+    "combined": 0.42792054481850583,
+    "confusion": [
+      [
+        116,
+        50
+      ],
+      [
+        46,
+        68
+      ]
+    ]
+  },
+  {
+    "name": "epoch22",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6467555263013548,
+    "shape_f1": 0.18087683982693162,
+    "combined": 0.4138161830641432,
+    "confusion": [
+      [
+        131,
+        35
+      ],
+      [
+        57,
+        57
+      ]
+    ]
+  },
+  {
+    "name": "epoch22",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.631083202511774,
+    "shape_f1": 0.17003624043934942,
+    "combined": 0.4005597214755617,
+    "confusion": [
+      [
+        135,
+        31
+      ],
+      [
+        63,
+        51
+      ]
+    ]
+  },
+  {
+    "name": "epoch22",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6286313267445343,
+    "shape_f1": 0.1627524972959445,
+    "combined": 0.39569191202023934,
+    "confusion": [
+      [
+        139,
+        27
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch22",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6327207207207207,
+    "shape_f1": 0.16194144257463208,
+    "combined": 0.3973310816476764,
+    "confusion": [
+      [
+        142,
+        24
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "epoch22",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6181762195926627,
+    "shape_f1": 0.1543275986741236,
+    "combined": 0.38625190913339313,
+    "confusion": [
+      [
+        144,
+        22
+      ],
+      [
+        71,
+        43
+      ]
+    ]
+  },
+  {
+    "name": "epoch23",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6452963207755013,
+    "shape_f1": 0.18707010722891643,
+    "combined": 0.4161832140022088,
+    "confusion": [
+      [
+        132,
+        34
+      ],
+      [
+        58,
+        56
+      ]
+    ]
+  },
+  {
+    "name": "epoch23",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6354166666666667,
+    "shape_f1": 0.17265836120826478,
+    "combined": 0.4040375139374658,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        64,
+        50
+      ]
+    ]
+  },
+  {
+    "name": "epoch23",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6357539315448659,
+    "shape_f1": 0.1655709265777432,
+    "combined": 0.40066242906130456,
+    "confusion": [
+      [
+        143,
+        23
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "epoch23",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6367293983877316,
+    "shape_f1": 0.16346996098504818,
+    "combined": 0.4000996796863899,
+    "confusion": [
+      [
+        145,
+        21
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch23",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6323995810653331,
+    "shape_f1": 0.15218676970601988,
+    "combined": 0.3922931753856765,
+    "confusion": [
+      [
+        147,
+        19
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch23",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6307839846559578,
+    "shape_f1": 0.1472035669351029,
+    "combined": 0.3889937757955303,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        72,
+        42
+      ]
+    ]
+  },
+  {
+    "name": "epoch24",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6457795004306632,
+    "shape_f1": 0.19659773200922837,
+    "combined": 0.4211886162199458,
+    "confusion": [
+      [
+        125,
+        41
+      ],
+      [
+        53,
+        61
+      ]
+    ]
+  },
+  {
+    "name": "epoch24",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6402705030283351,
+    "shape_f1": 0.1741587174303528,
+    "combined": 0.40721461022934397,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        63,
+        51
+      ]
+    ]
+  },
+  {
+    "name": "epoch24",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6296935196365936,
+    "shape_f1": 0.16736575994781006,
+    "combined": 0.3985296397922018,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "epoch24",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6174196174196174,
+    "shape_f1": 0.15766148963526436,
+    "combined": 0.3875405535274409,
+    "confusion": [
+      [
+        142,
+        24
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch24",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6293899641155363,
+    "shape_f1": 0.1557411263947558,
+    "combined": 0.39256554525514603,
+    "confusion": [
+      [
+        146,
+        20
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch24",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6223927115799569,
+    "shape_f1": 0.14109996173261607,
+    "combined": 0.3817463366562865,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        73,
+        41
+      ]
+    ]
+  },
+  {
+    "name": "epoch25",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6564598477552475,
+    "shape_f1": 0.20991485297330637,
+    "combined": 0.4331873503642769,
+    "confusion": [
+      [
+        119,
+        47
+      ],
+      [
+        46,
+        68
+      ]
+    ]
+  },
+  {
+    "name": "epoch25",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6634615384615384,
+    "shape_f1": 0.1947477903093581,
+    "combined": 0.42910466438544825,
+    "confusion": [
+      [
+        132,
+        34
+      ],
+      [
+        54,
+        60
+      ]
+    ]
+  },
+  {
+    "name": "epoch25",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6484110885733604,
+    "shape_f1": 0.1857842618210695,
+    "combined": 0.41709767519721497,
+    "confusion": [
+      [
+        133,
+        33
+      ],
+      [
+        58,
+        56
+      ]
+    ]
+  },
+  {
+    "name": "epoch25",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6422222222222222,
+    "shape_f1": 0.18397528806698113,
+    "combined": 0.4130987551446017,
+    "confusion": [
+      [
+        134,
+        32
+      ],
+      [
+        60,
+        54
+      ]
+    ]
+  },
+  {
+    "name": "epoch25",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6450904174412708,
+    "shape_f1": 0.17159928613179173,
+    "combined": 0.4083448517865313,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        62,
+        52
+      ]
+    ]
+  },
+  {
+    "name": "epoch25",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6206449036637716,
+    "shape_f1": 0.16858342922088804,
+    "combined": 0.39461416644232983,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        67,
+        47
+      ]
+    ]
+  },
+  {
+    "name": "epoch26",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6437026515151515,
+    "shape_f1": 0.15783615386497346,
+    "combined": 0.40076940269006245,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        69,
+        45
+      ]
+    ]
+  },
+  {
+    "name": "epoch26",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6032362755405221,
+    "shape_f1": 0.13558146597642978,
+    "combined": 0.36940887075847595,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        77,
+        37
+      ]
+    ]
+  },
+  {
+    "name": "epoch26",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.5947277654594728,
+    "shape_f1": 0.12476051211708634,
+    "combined": 0.3597441387882796,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        79,
+        35
+      ]
+    ]
+  },
+  {
+    "name": "epoch26",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.5889416018914867,
+    "shape_f1": 0.1222468544688356,
+    "combined": 0.3555942281801612,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        80,
+        34
+      ]
+    ]
+  },
+  {
+    "name": "epoch26",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.5831006886283268,
+    "shape_f1": 0.11995461149187472,
+    "combined": 0.3515276500601007,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        81,
+        33
+      ]
+    ]
+  },
+  {
+    "name": "epoch26",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.5828039962985618,
+    "shape_f1": 0.11397379826817042,
+    "combined": 0.34838889728336614,
+    "confusion": [
+      [
+        153,
+        13
+      ],
+      [
+        82,
+        32
+      ]
+    ]
+  },
+  {
+    "name": "epoch27",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6759259259259259,
+    "shape_f1": 0.21740131874029006,
+    "combined": 0.44666362233310797,
+    "confusion": [
+      [
+        129,
+        37
+      ],
+      [
+        49,
+        65
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "epoch27",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6575747165922363,
+    "shape_f1": 0.19204752921271703,
+    "combined": 0.4248111229024767,
+    "confusion": [
+      [
+        133,
+        33
+      ],
+      [
+        56,
+        58
+      ]
+    ]
+  },
+  {
+    "name": "epoch27",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.631083202511774,
+    "shape_f1": 0.1831513630046943,
+    "combined": 0.4071172827582341,
+    "confusion": [
+      [
+        135,
+        31
+      ],
+      [
+        63,
+        51
+      ]
+    ]
+  },
+  {
+    "name": "epoch27",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6274909420289855,
+    "shape_f1": 0.17579685192733274,
+    "combined": 0.4016438969781591,
+    "confusion": [
+      [
+        137,
+        29
+      ],
+      [
+        65,
+        49
+      ]
+    ]
+  },
+  {
+    "name": "epoch27",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6256045519203415,
+    "shape_f1": 0.1743688386093189,
+    "combined": 0.3999866952648302,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch27",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6306764650461654,
+    "shape_f1": 0.16946528078754658,
+    "combined": 0.40007087291685595,
+    "confusion": [
+      [
+        143,
+        23
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "epoch28",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6495021337126601,
+    "shape_f1": 0.18144818192899914,
+    "combined": 0.4154751578208296,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        63,
+        51
+      ]
+    ]
+  },
+  {
+    "name": "epoch28",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6354166666666667,
+    "shape_f1": 0.15812651987637535,
+    "combined": 0.39677159327152106,
+    "confusion": [
+      [
+        148,
+        18
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  },
+  {
+    "name": "epoch28",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.614400944324218,
+    "shape_f1": 0.13675384889204345,
+    "combined": 0.3755773966081307,
+    "confusion": [
+      [
+        150,
+        16
+      ],
+      [
+        75,
+        39
+      ]
+    ]
+  },
+  {
+    "name": "epoch28",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6061402972295272,
+    "shape_f1": 0.13467028208875123,
+    "combined": 0.3704052896591392,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        77,
+        37
+      ]
+    ]
+  },
+  {
+    "name": "epoch28",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.5889416018914867,
+    "shape_f1": 0.12781069666770137,
+    "combined": 0.35837614927959405,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        80,
+        34
+      ]
+    ]
+  },
+  {
+    "name": "epoch28",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.57125,
+    "shape_f1": 0.11793091659683912,
+    "combined": 0.34459045829841956,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        83,
+        31
+      ]
+    ]
+  },
+  {
+    "name": "epoch29",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6513799543473751,
+    "shape_f1": 0.23941555681520665,
+    "combined": 0.44539775558129086,
+    "confusion": [
+      [
+        110,
+        56
+      ],
+      [
+        40,
+        74
+      ]
+    ]
+  },
+  {
+    "name": "epoch29",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6651932662465908,
+    "shape_f1": 0.2167819162861796,
+    "combined": 0.4409875912663852,
+    "confusion": [
+      [
+        127,
+        39
+      ],
+      [
+        50,
+        64
+      ]
+    ]
+  },
+  {
+    "name": "epoch29",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6634615384615384,
+    "shape_f1": 0.2054569765003077,
+    "combined": 0.43445925748092307,
+    "confusion": [
+      [
+        132,
+        34
+      ],
+      [
+        54,
+        60
+      ]
+    ]
+  },
+  {
+    "name": "epoch29",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6437856076110404,
+    "shape_f1": 0.1947918377109235,
+    "combined": 0.41928872266098194,
+    "confusion": [
+      [
+        133,
+        33
+      ],
+      [
+        59,
+        55
+      ]
+    ]
+  },
+  {
+    "name": "epoch29",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.643691180377844,
+    "shape_f1": 0.1912684576828749,
+    "combined": 0.41747981903035947,
+    "confusion": [
+      [
+        136,
+        30
+      ],
+      [
+        61,
+        53
+      ]
+    ]
+  },
+  {
+    "name": "epoch29",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6256045519203415,
+    "shape_f1": 0.1666475485014417,
+    "combined": 0.3961260502108916,
+    "confusion": [
+      [
+        138,
+        28
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch30",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.6561383173959239,
+    "shape_f1": 0.20033663072280383,
+    "combined": 0.42823747405936385,
+    "confusion": [
+      [
+        134,
+        32
+      ],
+      [
+        57,
+        57
+      ]
+    ]
+  },
+  {
+    "name": "epoch30",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6407927927927928,
+    "shape_f1": 0.1813537440257185,
+    "combined": 0.4110732684092556,
+    "confusion": [
+      [
+        143,
+        23
+      ],
+      [
+        66,
+        48
+      ]
+    ]
+  },
+  {
+    "name": "epoch30",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6241388974937676,
+    "shape_f1": 0.15747084252960347,
+    "combined": 0.3908048700116855,
+    "confusion": [
+      [
+        146,
+        20
+      ],
+      [
+        71,
+        43
+      ]
+    ]
+  },
+  {
+    "name": "epoch30",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6194231602216547,
+    "shape_f1": 0.15581969154980285,
+    "combined": 0.3876214258857288,
+    "confusion": [
+      [
+        148,
+        18
+      ],
+      [
+        73,
+        41
+      ]
+    ]
+  },
+  {
+    "name": "epoch30",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6114630467571643,
+    "shape_f1": 0.1475477789488844,
+    "combined": 0.37950541285302436,
+    "confusion": [
+      [
+        149,
+        17
+      ],
+      [
+        75,
+        39
+      ]
+    ]
+  },
+  {
+    "name": "epoch30",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6061402972295272,
+    "shape_f1": 0.14125309097432073,
+    "combined": 0.37369669410192397,
+    "confusion": [
+      [
+        151,
+        15
+      ],
+      [
+        77,
+        37
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.1,
+    "tta": true,
+    "macro_f1": 0.6849090038933658,
+    "shape_f1": 0.2245569564086503,
+    "combined": 0.45473298015100805,
+    "confusion": [
+      [
+        113,
+        53
+      ],
+      [
+        34,
+        80
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.25,
+    "tta": true,
+    "macro_f1": 0.6533161068044788,
+    "shape_f1": 0.2041890154531699,
+    "combined": 0.42875256112882437,
+    "confusion": [
+      [
+        126,
+        40
+      ],
+      [
+        52,
+        62
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.4,
+    "tta": true,
+    "macro_f1": 0.6624121731176984,
+    "shape_f1": 0.2013212855729,
+    "combined": 0.4318667293452992,
+    "confusion": [
+      [
+        136,
+        30
+      ],
+      [
+        57,
+        57
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.5,
+    "tta": true,
+    "macro_f1": 0.636617749825297,
+    "shape_f1": 0.17661934184628378,
+    "combined": 0.4066185458357904,
+    "confusion": [
+      [
+        140,
+        26
+      ],
+      [
+        65,
+        49
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.6,
+    "tta": true,
+    "macro_f1": 0.6306764650461654,
+    "shape_f1": 0.16582184423251609,
+    "combined": 0.39824915463934074,
+    "confusion": [
+      [
+        143,
+        23
+      ],
+      [
+        68,
+        46
+      ]
+    ]
+  },
+  {
+    "name": "best_flip_tta",
+    "threshold": 0.75,
+    "tta": true,
+    "macro_f1": 0.6293899641155363,
+    "shape_f1": 0.16130314024821135,
+    "combined": 0.3953465521818738,
+    "confusion": [
+      [
+        146,
+        20
+      ],
+      [
+        70,
+        44
+      ]
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "name": "provided_original",
+  "threshold": 0.6,
+  "tta": false,
+  "macro_f1": 0.5136653895274584,
+  "shape_f1": 0.00944448451110959,
+  "combined": 0.261554937019284,
+  "confusion": [
+    [
+      77,
+      89
+    ],
+    [
+      47,
+      67
+    ]
+  ]
+}

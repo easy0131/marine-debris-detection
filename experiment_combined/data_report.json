@@ -1,0 +1,302 @@
+{
+  "labels": [
+    "C:\\Users\\User\\Downloads\\310.AI기반 국립공원 변화탐지 모니터링 플랫폼 구축\\01-1.정식개방데이터\\Validation\\02.라벨링데이터\\VL_02.JSON_01. Drone.zip",
+    "C:\\Users\\User\\Desktop\\해안쓰레기\\310.AI기반 국립공원 변화탐지 모니터링 플랫폼 구축\\01-1.정식개방데이터\\Training\\02.라벨링데이터\\TL_02.JSON_01.Drone.zip"
+  ],
+  "images": [
+    "C:\\Users\\User\\Downloads\\310.AI기반 국립공원 변화탐지 모니터링 플랫폼 구축\\01-1.정식개방데이터\\Validation\\01.원천데이터\\VS_01.Drone.zip",
+    "C:\\Users\\User\\Desktop\\해안쓰레기\\310.AI기반 국립공원 변화탐지 모니터링 플랫폼 구축\\01-1.정식개방데이터\\Training\\01.원천데이터\\TS_01.Drone.zip"
+  ],
+  "total_json": 18000,
+  "positive_images": 262,
+  "positive_tiles": 65,
+  "geographic_components": [
+    {
+      "groups": [
+        "DR2001450249"
+      ],
+      "positive_images": 1
+    },
+    {
+      "groups": [
+        "DR2001470250",
+        "DR2001470251"
+      ],
+      "positive_images": 14
+    },
+    {
+      "groups": [
+        "DR2001490239",
+        "DR2001490240"
+      ],
+      "positive_images": 14
+    },
+    {
+      "groups": [
+        "DR2001490248",
+        "DR2001490249"
+      ],
+      "positive_images": 11
+    },
+    {
+      "groups": [
+        "DR2001520244",
+        "DR2001520246",
+        "DR2001530245",
+        "DR2001530246"
+      ],
+      "positive_images": 16
+    },
+    {
+      "groups": [
+        "DR2001550245",
+        "DR2001560245"
+      ],
+      "positive_images": 2
+    },
+    {
+      "groups": [
+        "DR2001550261",
+        "DR2001560261"
+      ],
+      "positive_images": 7
+    },
+    {
+      "groups": [
+        "DR2001580262"
+      ],
+      "positive_images": 1
+    },
+    {
+      "groups": [
+        "DR2001590236",
+        "DR2001590237",
+        "DR2001590238",
+        "DR2001600236",
+        "DR2001600237"
+      ],
+      "positive_images": 33
+    },
+    {
+      "groups": [
+        "DR2001630237",
+        "DR2001630238"
+      ],
+      "positive_images": 2
+    },
+    {
+      "groups": [
+        "DR2001610243",
+        "DR2001610244",
+        "DR2001610245",
+        "DR2001620240",
+        "DR2001620241",
+        "DR2001620242",
+        "DR2001620243",
+        "DR2001620244",
+        "DR2001630240",
+        "DR2001630241",
+        "DR2001630242"
+      ],
+      "positive_images": 37
+    },
+    {
+      "groups": [
+        "DR2001660241"
+      ],
+      "positive_images": 1
+    },
+    {
+      "groups": [
+        "DR2001700247",
+        "DR2001710248",
+        "DR2001720247",
+        "DR2001720248"
+      ],
+      "positive_images": 5
+    },
+    {
+      "groups": [
+        "DR2001730250",
+        "DR2001730251",
+        "DR2001740250",
+        "DR2001740251"
+      ],
+      "positive_images": 8
+    },
+    {
+      "groups": [
+        "DR2001770251",
+        "DR2001770252",
+        "DR2001780250",
+        "DR2001780251",
+        "DR2001790250"
+      ],
+      "positive_images": 13
+    },
+    {
+      "groups": [
+        "DR2001860246",
+        "DR2001860247"
+      ],
+      "positive_images": 14
+    },
+    {
+      "groups": [
+        "DR2001910238",
+        "DR2001910239",
+        "DR2001910240",
+        "DR2001910241",
+        "DR2001910242",
+        "DR2001920239",
+        "DR2001920241",
+        "DR2001920242"
+      ],
+      "positive_images": 44
+    },
+    {
+      "groups": [
+        "DR2001880246",
+        "DR2001880247",
+        "DR2001890246",
+        "DR2001890247",
+        "DR2001900246",
+        "DR2001910246",
+        "DR2001920245"
+      ],
+      "positive_images": 39
+    }
+  ],
+  "holdout_groups": [
+    "DR2001880246",
+    "DR2001880247",
+    "DR2001890246",
+    "DR2001890247",
+    "DR2001900246",
+    "DR2001910246",
+    "DR2001920245"
+  ],
+  "holdout_bounds": [
+    [
+      246341.27300439525,
+      4078504.647108962,
+      246443.67300439524,
+      4078607.0471089617
+    ],
+    [
+      246418.07300439526,
+      4078504.647108962,
+      246520.47300439526,
+      4078607.0471089617
+    ],
+    [
+      246341.27300439525,
+      4078427.8471089615,
+      246443.67300439524,
+      4078530.2471089615
+    ],
+    [
+      246418.07300439526,
+      4078427.8471089615,
+      246520.47300439526,
+      4078530.2471089615
+    ],
+    [
+      246341.27300439525,
+      4078351.0471089613,
+      246443.67300439524,
+      4078453.4471089616
+    ],
+    [
+      246341.27300439525,
+      4078274.247108962,
+      246443.67300439524,
+      4078376.647108962
+    ],
+    [
+      246264.47300439526,
+      4078197.4471089616,
+      246366.87300439525,
+      4078299.8471089615
+    ]
+  ],
+  "buffer_m": 30,
+  "class_counts": {
+    "해안쓰레기_스티로폼": 291,
+    "해안쓰레기_플라스틱": 42,
+    "해안쓰레기_기타": 85
+  },
+  "manifest_splits": {
+    "train": 669,
+    "excluded_buffer": 160,
+    "val": 70
+  },
+  "note": "AIHub proxy validation, not competition score. Four overlapping fixed crops per validation image are correlated.",
+  "excluded_nodata": [
+    "DR2001450248_20220921",
+    "DR2001450249_20221108",
+    "DR2001490239_20221108",
+    "DR2001490239_20221118",
+    "DR2001500238_20220921",
+    "DR2001500238_20221020",
+    "DR2001590235_20221020",
+    "DR2001590235_20221123"
+  ],
+  "prepared": {
+    "train": {
+      "images": 661,
+      "positives": 221,
+      "positives_ge50": 157
+    },
+    "val": {
+      "images": 70,
+      "positives": 39,
+      "positives_ge50": 32
+    }
+  },
+  "positive_area_quantiles": [
+    1.0,
+    109.0,
+    3825.0
+  ],
+  "validation_identical_to": "experiment_v2/data.npz",
+  "source_prepared_counts": [
+    {
+      "source": "0",
+      "split": "train",
+      "positive": false,
+      "images": 132
+    },
+    {
+      "source": "0",
+      "split": "train",
+      "positive": true,
+      "images": 77
+    },
+    {
+      "source": "0",
+      "split": "val",
+      "positive": false,
+      "images": 31
+    },
+    {
+      "source": "0",
+      "split": "val",
+      "positive": true,
+      "images": 39
+    },
+    {
+      "source": "1",
+      "split": "train",
+      "positive": false,
+      "images": 308
+    },
+    {
+      "source": "1",
+      "split": "train",
+      "positive": true,
+      "images": 144
+    }
+  ],
+  "data_sha256": "ce6b62d69b0dabb39a73212107de45a754a855eec9720354bb13cfe4fb743e32"
+}

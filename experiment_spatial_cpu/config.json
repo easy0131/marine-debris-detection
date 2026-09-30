@@ -1,0 +1,17 @@
+{
+  "data": "C:\\Users\\User\\Downloads\\04_coastal debris_submission\\marine-debris-detection\\experiment_v2\\data.npz",
+  "out": "experiment_spatial_cpu",
+  "init": "C:\\Users\\User\\Downloads\\04_coastal debris_submission\\04_coastal debris_submission\\assets\\model\\unet_r18_debris_lite.pt",
+  "epochs": 4,
+  "samples": 128,
+  "batch_size": 8,
+  "device": "cpu",
+  "tta": false,
+  "resume": false,
+  "train_images": 594,
+  "train_positive": 77,
+  "validation_images": 70,
+  "validation_crops": 280,
+  "validation_positive": 114,
+  "note": "Spatial AIHub proxy. Chosen on validation, not an independent test or Public score."
+}

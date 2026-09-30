@@ -1,0 +1,542 @@
+[
+  {
+    "name": "provided_original",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.4922094508301405,
+    "shape_f1": 0.011751457645976755,
+    "combined": 0.25198045423805865,
+    "confusion": [
+      [
+        64,
+        102
+      ],
+      [
+        40,
+        74
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.48912280701754385,
+    "shape_f1": 0.010895433447066834,
+    "combined": 0.2500091202323053,
+    "confusion": [
+      [
+        66,
+        100
+      ],
+      [
+        43,
+        71
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.49642214824168673,
+    "shape_f1": 0.010106096021808307,
+    "combined": 0.25326412213174754,
+    "confusion": [
+      [
+        69,
+        97
+      ],
+      [
+        44,
+        70
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.5070422535211268,
+    "shape_f1": 0.010022337981240135,
+    "combined": 0.2585322957511834,
+    "confusion": [
+      [
+        73,
+        93
+      ],
+      [
+        45,
+        69
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.5136653895274584,
+    "shape_f1": 0.00944448451110959,
+    "combined": 0.261554937019284,
+    "confusion": [
+      [
+        77,
+        89
+      ],
+      [
+        47,
+        67
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.5012750035238791,
+    "shape_f1": 0.009280131856171001,
+    "combined": 0.2552775676900251,
+    "confusion": [
+      [
+        80,
+        86
+      ],
+      [
+        53,
+        61
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.35009057971014496,
+    "shape_f1": 0.12711273021221428,
+    "combined": 0.23860165496117963,
+    "confusion": [
+      [
+        14,
+        152
+      ],
+      [
+        12,
+        102
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.435476528050573,
+    "shape_f1": 0.12212251363604007,
+    "combined": 0.27879952084330656,
+    "confusion": [
+      [
+        43,
+        123
+      ],
+      [
+        32,
+        82
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.45954928353210367,
+    "shape_f1": 0.11030084777551809,
+    "combined": 0.28492506565381087,
+    "confusion": [
+      [
+        58,
+        108
+      ],
+      [
+        43,
+        71
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.4678503552341229,
+    "shape_f1": 0.10784134923297846,
+    "combined": 0.2878458522335507,
+    "confusion": [
+      [
+        66,
+        100
+      ],
+      [
+        49,
+        65
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.47761194029850745,
+    "shape_f1": 0.10014586351067817,
+    "combined": 0.2888789019045928,
+    "confusion": [
+      [
+        73,
+        93
+      ],
+      [
+        53,
+        61
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.4999934827096286,
+    "shape_f1": 0.08423333540387158,
+    "combined": 0.2921134090567501,
+    "confusion": [
+      [
+        92,
+        74
+      ],
+      [
+        63,
+        51
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.5456374706287079,
+    "shape_f1": 0.16835280723832954,
+    "combined": 0.35699513893351875,
+    "confusion": [
+      [
+        59,
+        107
+      ],
+      [
+        18,
+        96
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.6064199550194235,
+    "shape_f1": 0.14933639291744183,
+    "combined": 0.37787817396843265,
+    "confusion": [
+      [
+        91,
+        75
+      ],
+      [
+        35,
+        79
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6021845957324783,
+    "shape_f1": 0.12713229784294272,
+    "combined": 0.36465844678771053,
+    "confusion": [
+      [
+        106,
+        60
+      ],
+      [
+        49,
+        65
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6131528046421664,
+    "shape_f1": 0.12224635157997654,
+    "combined": 0.36769957811107146,
+    "confusion": [
+      [
+        112,
+        54
+      ],
+      [
+        51,
+        63
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.625668449197861,
+    "shape_f1": 0.1188379366098009,
+    "combined": 0.37225319290383097,
+    "confusion": [
+      [
+        120,
+        46
+      ],
+      [
+        54,
+        60
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6114050154586053,
+    "shape_f1": 0.10905274516213316,
+    "combined": 0.3602288803103692,
+    "confusion": [
+      [
+        127,
+        39
+      ],
+      [
+        62,
+        52
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.46090741670852164,
+    "shape_f1": 0.19802290273490522,
+    "combined": 0.3294651597217134,
+    "confusion": [
+      [
+        30,
+        136
+      ],
+      [
+        2,
+        112
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.5320991065671917,
+    "shape_f1": 0.19544971738709027,
+    "combined": 0.363774411977141,
+    "confusion": [
+      [
+        52,
+        114
+      ],
+      [
+        13,
+        101
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.5722645124540418,
+    "shape_f1": 0.19804081996235207,
+    "combined": 0.3851526662081969,
+    "confusion": [
+      [
+        64,
+        102
+      ],
+      [
+        16,
+        98
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.578784956605593,
+    "shape_f1": 0.19005951190635975,
+    "combined": 0.3844222342559764,
+    "confusion": [
+      [
+        69,
+        97
+      ],
+      [
+        20,
+        94
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.5986895986895987,
+    "shape_f1": 0.18886864633050143,
+    "combined": 0.3937791225100501,
+    "confusion": [
+      [
+        76,
+        90
+      ],
+      [
+        22,
+        92
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6350439582907381,
+    "shape_f1": 0.1734146252753028,
+    "combined": 0.4042292917830205,
+    "confusion": [
+      [
+        95,
+        71
+      ],
+      [
+        31,
+        83
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.1,
+    "tta": false,
+    "macro_f1": 0.5239589872358235,
+    "shape_f1": 0.20489225631904892,
+    "combined": 0.3644256217774362,
+    "confusion": [
+      [
+        53,
+        113
+      ],
+      [
+        17,
+        97
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.5996732026143792,
+    "shape_f1": 0.19322255760233856,
+    "combined": 0.39644788010835885,
+    "confusion": [
+      [
+        80,
+        86
+      ],
+      [
+        26,
+        88
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.6201883701883701,
+    "shape_f1": 0.17230835920387036,
+    "combined": 0.39624836469612024,
+    "confusion": [
+      [
+        95,
+        71
+      ],
+      [
+        35,
+        79
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.6425946698642324,
+    "shape_f1": 0.16805694784921404,
+    "combined": 0.4053258088567232,
+    "confusion": [
+      [
+        105,
+        61
+      ],
+      [
+        38,
+        76
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.6354166666666667,
+    "shape_f1": 0.14958283151969443,
+    "combined": 0.3924997490931806,
+    "confusion": [
+      [
+        110,
+        56
+      ],
+      [
+        44,
+        70
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.6588063578783862,
+    "shape_f1": 0.13732485063122213,
+    "combined": 0.39806560425480414,
+    "confusion": [
+      [
+        125,
+        41
+      ],
+      [
+        50,
+        64
+      ]
+    ]
+  }
+]

@@ -1,5 +1,6 @@
 """Package the selected checkpoint and execute its notebook on validation inputs."""
 import csv
+import argparse
 import json
 import os
 import shutil
@@ -15,24 +16,31 @@ from train_baseline import BASE, HERE
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--experiment', type=Path, default=OUT)
+    parser.add_argument('--template', type=Path, default=BASE.parents[2])
+    parser.add_argument('--destination', type=Path, default=HERE / 'submission_improved_20260927')
+    args = parser.parse_args()
+    experiment = args.experiment.resolve()
     self_check()
     torch.set_num_threads(4)
-    selected = json.loads((OUT / 'best.json').read_text())
-    source = BASE.parents[2]
-    destination = HERE / 'submission_improved_20260927'
+    selected = json.loads((experiment / 'best.json').read_text())
+    source = args.template.resolve()
+    destination = args.destination.resolve()
     (destination / 'assets/model').mkdir(parents=True, exist_ok=True)
-    shutil.copy2(OUT / 'best.pt', destination / 'assets/model/unet_r18_debris_lite.pt')
+    shutil.copy2(experiment / 'best.pt', destination / 'assets/model/unet_r18_debris_lite.pt')
     for name in ('requirements.txt', 'LICENSE', 'NOTICE'):
         shutil.copy2(source / name, destination / name)
     notebook = json.loads((source / 'predict.ipynb').read_text(encoding='utf-8'))
     cells = []
     for cell in notebook['cells']:
         content = ''.join(cell['source'])
-        if cell['cell_type'] == 'code' and ('%aifactory' in content or '%pip' in content):
+        if cell['cell_type'] == 'code' and ('%aifactory' in content or '%pip' in content or '%load_ext' in content):
             continue
         if content.startswith('## 제출'):
             continue
         if 'def predict_batch' in content:
+            content = content.replace('(im / 255.0 - MEAN) / STD', '(im.astype(np.float32) / 255.0 - MEAN) / STD')
             old = 'return (prob[:, 1] > prob[:, 0]).cpu().numpy()'
             new = 'p = prob[:, 1]\n'
             if selected['tta']:
@@ -47,10 +55,14 @@ def main():
         cells.append(cell)
     notebook['cells'] = cells
     (destination / 'predict.ipynb').write_text(json.dumps(notebook, ensure_ascii=False, indent=1), encoding='utf-8')
-    smoke = OUT / 'smoke'
+    smoke = experiment / 'smoke'
     (smoke / 'images').mkdir(parents=True, exist_ok=True)
-    data = np.load(OUT / 'data.npz')
-    ids = np.flatnonzero(data['splits'] == 'val')[:4]
+    data = np.load(experiment / 'data.npz')
+    val = np.flatnonzero(data['splits'] == 'val')
+    positive = data['masks'][val].any(axis=(1, 2))
+    positions = np.r_[np.flatnonzero(positive)[:2], np.flatnonzero(~positive)[:2]]
+    ids = val[positions]
+    assert len(ids), 'No validation inputs available'
     with (smoke / 'patches.csv').open('w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['id'])
@@ -65,7 +77,7 @@ def main():
     for cell in cells:
         if cell['cell_type'] == 'code':
             exec(compile(''.join(cell['source']), 'predict.ipynb', 'exec'), scope)
-    expected_prob = np.load(OUT / (selected['name'] + '_prob.npy'))[:4]
+    expected_prob = np.load(experiment / selected.get('probability_file', selected['name'] + '_prob.npy'))[positions]
     rows = list(csv.DictReader((smoke / 'prediction.csv').open()))
     assert [row['id'] for row in rows] == [f'check{i}' for i in ids]
     for row, probability in zip(rows, expected_prob):
@@ -85,7 +97,7 @@ def main():
         for start, length in zip(encoded[::2], encoded[1::2]):
             decoded[start:start + length] = True
         assert np.array_equal(mask.reshape(-1), decoded)
-    archive = HERE / (destination.name + '.zip')
+    archive = destination.with_suffix('.zip')
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as output:
         for path in destination.rglob('*'):
             if path.is_file():

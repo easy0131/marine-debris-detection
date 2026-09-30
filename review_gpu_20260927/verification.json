@@ -1,0 +1,63 @@
+{
+  "selected": {
+    "name": "best_flip_tta",
+    "threshold": 0.1,
+    "tta": true,
+    "macro_f1": 0.6849090038933658,
+    "shape_f1": 0.2245569564086503,
+    "combined": 0.45473298015100805,
+    "confusion": [
+      [
+        113,
+        53
+      ],
+      [
+        34,
+        80
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  "recomputed": {
+    "macro_f1": 0.6849090038933658,
+    "shape_f1": 0.2245569564086503,
+    "combined": 0.45473298015100805,
+    "confusion": [
+      [
+        113,
+        53
+      ],
+      [
+        34,
+        80
+      ]
+    ]
+  },
+  "previous": {
+    "name": "epoch1",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.7057359367221638,
+    "shape_f1": 0.14996720351759643,
+    "combined": 0.4278515701198801,
+    "confusion": [
+      [
+        141,
+        25
+      ],
+      [
+        51,
+        63
+      ]
+    ],
+    "probability_file": "best_prob.npy"
+  },
+  "improvement": 0.026881410031127928,
+  "validation_identical": true,
+  "epochs_completed": 30,
+  "notebook_smoke_rows": 4,
+  "smoke_predictions_match": true,
+  "zip_crc_ok": true,
+  "submission_sha256": "c37b4ba349cc26a4f4836a9d9ad157bcdedf4921250df611e92eb41b9fdbbac4",
+  "public_score": null
+}

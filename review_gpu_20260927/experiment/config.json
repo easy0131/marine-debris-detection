@@ -1,0 +1,18 @@
+{
+  "data": "data/data.npz",
+  "out": "experiment_gpu_ce6b62d69b",
+  "init": "provided_original.pt",
+  "epochs": 30,
+  "samples": 512,
+  "batch_size": 16,
+  "device": "cuda",
+  "tta": true,
+  "resume": false,
+  "data_sha256": "ce6b62d69b0dabb39a73212107de45a754a855eec9720354bb13cfe4fb743e32",
+  "train_images": 661,
+  "train_positive": 221,
+  "validation_images": 70,
+  "validation_crops": 280,
+  "validation_positive": 114,
+  "note": "Spatial AIHub proxy. Chosen on validation, not an independent test or Public score."
+}

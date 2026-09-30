@@ -21,3 +21,9 @@
 스크립트의 데이터 및 제공 원본 모델 경로는 `train_baseline.py`의 `DATA`, `BASE`에 지정되어 있습니다. 실행 전 로컬 경로를 맞추고 루트에 `initial_unet_r18.pt`를 준비한 뒤 `python improve_model.py`, `python package_improved.py` 순서로 실행합니다. 이미 만든 제출 노트북을 사용하려면 해당 폴더의 `assets/model/unet_r18_debris_lite.pt`에 이번 실험의 `best.pt`를 복사해야 합니다.
 
 원본 AIHub 데이터, 영상이 포함된 시각화 결과 HTML, 개인 참여키는 이 저장소에 포함하지 않았습니다. 제출 시 `submission_initial/predict.ipynb`의 마지막 셀에서 본인 참여키를 사용하고, 디버그 검사에는 `--debug`를 붙입니다. 참여키를 넣은 노트북은 저장소에 올리지 마세요.
+
+## 지역 분리 재학습 / Colab
+
+`prepare_coastal.py`는 JSON 클래스명으로 마스크를 복원하고, 겹치는 타일과 30m 완충 구역을 분리하며, 추가 데이터 추출 목록을 생성합니다. `train_spatial.py`는 고정 위치 검증과 GPU 학습을 지원합니다. `make_colab.py`는 데이터·가중치·코드가 포함된 개인용 Colab 묶음을 만듭니다. 자세한 실행 방법과 한계는 [GPU_GUIDE.md](GPU_GUIDE.md)를 보세요.
+
+`package_improved.py --experiment <실험폴더> --template <원본제출폴더> --destination <출력폴더>`로 선택한 실험을 패키징할 수 있습니다. 새 검증 결과를 기존 0.5665 또는 대회 Public 0.1800과 직접 비교하면 안 됩니다.

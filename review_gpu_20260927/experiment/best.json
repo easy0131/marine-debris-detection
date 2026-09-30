@@ -1,0 +1,19 @@
+{
+  "name": "best_flip_tta",
+  "threshold": 0.1,
+  "tta": true,
+  "macro_f1": 0.6849090038933658,
+  "shape_f1": 0.2245569564086503,
+  "combined": 0.45473298015100805,
+  "confusion": [
+    [
+      113,
+      53
+    ],
+    [
+      34,
+      80
+    ]
+  ],
+  "probability_file": "best_prob.npy"
+}

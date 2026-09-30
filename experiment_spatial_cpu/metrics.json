@@ -1,0 +1,452 @@
+[
+  {
+    "name": "provided_original",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.48912280701754385,
+    "shape_f1": 0.010895433447066834,
+    "combined": 0.2500091202323053,
+    "confusion": [
+      [
+        66,
+        100
+      ],
+      [
+        43,
+        71
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.49642214824168673,
+    "shape_f1": 0.010106096021808307,
+    "combined": 0.25326412213174754,
+    "confusion": [
+      [
+        69,
+        97
+      ],
+      [
+        44,
+        70
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.5070422535211268,
+    "shape_f1": 0.010022337981240135,
+    "combined": 0.2585322957511834,
+    "confusion": [
+      [
+        73,
+        93
+      ],
+      [
+        45,
+        69
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.5136653895274584,
+    "shape_f1": 0.00944448451110959,
+    "combined": 0.261554937019284,
+    "confusion": [
+      [
+        77,
+        89
+      ],
+      [
+        47,
+        67
+      ]
+    ]
+  },
+  {
+    "name": "provided_original",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.5012750035238791,
+    "shape_f1": 0.009280131856171001,
+    "combined": 0.2552775676900251,
+    "confusion": [
+      [
+        80,
+        86
+      ],
+      [
+        53,
+        61
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch1",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch2",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch3",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.25,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.4,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.5,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.6,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  },
+  {
+    "name": "epoch4",
+    "threshold": 0.75,
+    "tta": false,
+    "macro_f1": 0.3721973094170404,
+    "shape_f1": 0.0,
+    "combined": 0.1860986547085202,
+    "confusion": [
+      [
+        166,
+        0
+      ],
+      [
+        114,
+        0
+      ]
+    ]
+  }
+]
